@@ -1,21 +1,23 @@
+
 #![no_std]
-use gmeta::metawasm;
-use gstd::{prelude::*, ActorId};
-use thread_io::*;
+
+use io::*;
+use gmeta::{ Metadata, metawasm};
+use gstd::{ ActorId, prelude::*};
+
+
+#[cfg(feature = "binary-vendor")]
+include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
 
 #[metawasm]
 pub mod metafns {
-    pub type State = Thread;
+    pub type State = Thread ;
 
-    pub fn owner(state: State) -> ActorId {
-        state.owner
+
+    pub fn get_state(state: State) -> Thread  {
+        state
     }
 
-    pub fn get_likes(state: State) -> u128 {
-        state.likes
-    }
 
-    pub fn get_id(state: State) -> String {
-        state.id
-    }
+
 }
