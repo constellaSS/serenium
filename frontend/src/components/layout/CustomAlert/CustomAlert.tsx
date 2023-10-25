@@ -65,6 +65,7 @@ const CustomAlert: React.FC<CustomAlertProps> = ({isOpen, onClose, onConfirm}) =
 							if (status.type === "Finalized") {
 								alert.success(status.type);
 							}
+							onClose();
 						}
 					}
 				)
