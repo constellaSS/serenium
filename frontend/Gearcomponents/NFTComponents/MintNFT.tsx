@@ -23,7 +23,6 @@ const metadata = ProgramMetadata.from(meta);
     payload: {mint:[2,{"name":"VARA","description":"VARA NFT","media":"https://strapi.mewapi.io/uploads/logo_vara_black_1_85279a4c70.png","reference":"Vara Example"}]}, // Add your data
     gasLimit: 2099819245,
     value: 0,
-    
   };
 
   const signer = async () => {

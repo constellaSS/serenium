@@ -3,9 +3,9 @@ use gstd::{ prelude::*, ActorId };
 use gmeta::{In, InOut, Metadata};
 #[derive(Encode, Decode, TypeInfo)]
 pub struct InitThread {
-    pub id: u128,
-    pub owner: ActorId,
-    pub thread_type: ThreadType,
+    pub id: String,
+    pub owner: String,
+    pub thread_type: String, // temporary change to string, usually ThreadType
     pub content: String
 }
 
@@ -20,9 +20,9 @@ pub struct ThreadReply {
 
 #[derive(Default, Encode, Decode, Clone, TypeInfo)]
 pub struct Thread {
-    id: u128,
-    owner: ActorId,
-    thread_type: ThreadType,
+    id: String,
+    owner: String,
+    thread_type: String,
     content: String,
     replies: Vec<ThreadReply>,
     participants:Vec<(ActorId, u128)>,
@@ -45,7 +45,6 @@ pub enum ThreadState {
     Active,
     Expired
 }
-
 
 #[derive(Encode, Decode, TypeInfo)]
 pub enum ThreadAction {
@@ -97,12 +96,11 @@ pub struct InitFT {
     pub ft_program_id: ActorId,
 }
 
-
 #[derive(Encode, Decode, TypeInfo)]
 pub struct IoThread {
-    pub id: u128,
-    pub owner: ActorId,
-    pub thread_type: ThreadType,
+    pub id: String,
+    pub owner: String,
+    pub thread_type: String,
     pub content: String,
     pub replies: Vec<(ActorId,ThreadReply)>,
     pub participants:Vec<(ActorId, u128)>,

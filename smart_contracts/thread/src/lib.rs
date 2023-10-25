@@ -9,9 +9,9 @@ include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
 
 #[derive(Clone, Default)]
 struct Thread {
-    id: u128,
-    owner: ActorId,
-    thread_type: ThreadType,
+    id: String,
+    owner: String,
+    thread_type: String,
     content: String,
     replies: HashMap<ActorId, ThreadReply>,
     participants: HashMap<ActorId, u128>,
@@ -52,10 +52,18 @@ impl Thread {
         };
     }
 
-    async fn tokens_transfer(&mut self, amount_tokens: u128) {
+    async fn tokens_transfer_reward(&mut self, amount_tokens: u128) {
         let currentstate = thread_state_mut();
         let address_ft = addresft_state_mut();           
         let payload = FTAction::Transfer{from: exec::program_id(), to: msg::source() ,amount: amount_tokens};
+        let _ = msg::send(address_ft.ft_program_id, payload, 0);
+        currentstate.participants.entry(msg::source()).or_insert(amount_tokens);
+    }
+
+    async fn tokens_transfer_pay(&mut self, amount_tokens: u128) {
+        let currentstate = thread_state_mut();
+        let address_ft = addresft_state_mut();
+        let payload = FTAction::Transfer{from: msg::source() , to: exec::program_id(), amount: amount_tokens};
         let _ = msg::send(address_ft.ft_program_id, payload, 0);
         currentstate.participants.entry(msg::source()).or_insert(amount_tokens);
     }
@@ -112,7 +120,7 @@ async fn main() {
             new_thread.owner = init_thread.owner;
             new_thread.thread_type = init_thread.thread_type;
             new_thread.content = init_thread.content;
-            new_thread.state = ThreadState::Active ;
+            new_thread.state = ThreadState::Active;
         }
 
         ThreadAction::AddReply(reply) => {
