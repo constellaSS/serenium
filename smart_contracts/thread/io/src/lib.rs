@@ -4,8 +4,8 @@ use gmeta::{In, InOut, Metadata};
 #[derive(Encode, Decode, TypeInfo)]
 pub struct InitThread {
     pub id: String,
-    pub owner: String,
     pub thread_type: String, // temporary change to string, usually ThreadType
+    pub title: String,
     pub content: String
 }
 
@@ -21,8 +21,9 @@ pub struct ThreadReply {
 #[derive(Default, Encode, Decode, Clone, TypeInfo)]
 pub struct Thread {
     id: String,
-    owner: String,
+    owner: ActorId,
     thread_type: String,
+    title: String,
     content: String,
     replies: Vec<ThreadReply>,
     participants:Vec<(ActorId, u128)>,
@@ -99,8 +100,9 @@ pub struct InitFT {
 #[derive(Encode, Decode, TypeInfo)]
 pub struct IoThread {
     pub id: String,
-    pub owner: String,
+    pub owner: ActorId,
     pub thread_type: String,
+    pub title: String,
     pub content: String,
     pub replies: Vec<(ActorId,ThreadReply)>,
     pub participants:Vec<(ActorId, u128)>,

@@ -10,8 +10,9 @@ include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
 #[derive(Clone, Default)]
 struct Thread {
     id: String,
-    owner: String,
+    owner: ActorId,
     thread_type: String,
+    title: String,
     content: String,
     replies: HashMap<ActorId, ThreadReply>,
     participants: HashMap<ActorId, u128>,
@@ -117,8 +118,9 @@ async fn main() {
             let new_thread = thread_state_mut();
 
             new_thread.id = init_thread.id;
-            new_thread.owner = init_thread.owner;
+            new_thread.owner = msg::source();
             new_thread.thread_type = init_thread.thread_type;
+            new_thread.title = init_thread.title;
             new_thread.content = init_thread.content;
             new_thread.state = ThreadState::Active;
         }
@@ -173,6 +175,7 @@ fn common_state() -> <ContractMetadata as Metadata>::State {
         id,
         owner,
         thread_type,
+        title,
         content,
         replies,
         participants,
@@ -186,6 +189,7 @@ fn common_state() -> <ContractMetadata as Metadata>::State {
     IoThread {
         id,
         owner,
+        title,
         thread_type,
         content,
         replies,
