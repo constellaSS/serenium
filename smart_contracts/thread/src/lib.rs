@@ -69,7 +69,7 @@ impl Thread {
         current_state.distributed_tokens += amount_tokens;
     }
 
-    fn find_reply_with_most_likes(&mut self) -> Option<&ActorId> {
+    fn find_winner(&mut self) -> Option<&ActorId> {
         let current_state = thread_state_mut();
         // Initialize variables to keep track of the reply with the most likes
         let mut max_likes = 0;
@@ -170,7 +170,7 @@ async fn main() {
         ThreadAction::EndThread => {
             let thread = thread_state_mut();
             thread.state = ThreadState::Expired;
-            let &winner = thread.find_reply_with_most_likes().expect("Winner not found");
+            let &winner = thread.find_winner().expect("Winner not found");
             thread.tokens_transfer_reward(1, winner).await;
         }
     };
