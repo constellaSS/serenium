@@ -2,7 +2,7 @@
 
 ## Welcome to the Serenium Repository
 
-Unleash the potential of social media with Serenium, the *next generation social media dapp* that's here to revolutionize the digital landscape! 🌐
+Unleash the potential of social media with Serenium, the *next generation social media dapp* that's here to rediscover the purpose social media in the web3 world! 🌐
 
 ![Serenium Logo](SereniumLogo.png)
 
