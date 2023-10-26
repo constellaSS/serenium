@@ -51,7 +51,7 @@ pub enum ThreadState {
 pub enum ThreadAction {
     NewThread(InitThread),
     EndThread,
-    AddReply(ThreadReply),
+    AddReply(String), // only need the content
     LikeReply(u128)
 }
 

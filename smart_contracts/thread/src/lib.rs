@@ -54,9 +54,8 @@ impl Thread {
     }
 
     async fn tokens_transfer_reward(&mut self, amount_tokens: u128, dest: ActorId) {
-        let current_state = thread_state_mut();
         let address_ft = addresft_state_mut();           
-        let payload = FTAction::Transfer{from: exec::program_id(), to: dest ,amount: amount_tokens};
+        let payload = FTAction::Transfer {from: exec::program_id(), to: dest ,amount: amount_tokens};
         let _ = msg::send(address_ft.ft_program_id, payload, 0);
     }
 
@@ -71,11 +70,9 @@ impl Thread {
 
     fn find_winner(&mut self) -> Option<&ActorId> {
         let current_state = thread_state_mut();
-        // Initialize variables to keep track of the reply with the most likes
         let mut max_likes = 0;
         let mut actor_id_with_most_likes: Option<&ActorId> = None;
 
-        // Iterate through the replies in the HashMap
         for (actor_id, reply) in &current_state.replies {
             if reply.number_of_likes > max_likes {
                 max_likes = reply.number_of_likes;
@@ -144,22 +141,18 @@ async fn main() {
             new_thread.tokens_transfer_pay(1).await;
         }
 
-        ThreadAction::AddReply(reply) => {
+        ThreadAction::AddReply(content) => {
             let thread = thread_state_mut();
             
             let reply_user = thread.replies.entry(msg::source()).or_insert(ThreadReply {
                 post_id: 0,
-                post_owner: 0.into(),
+                post_owner: msg::source(),
                 content: 0.to_string(),
                 number_of_likes: 0,
                 number_of_reports: 0,
             });
 
-            reply_user.post_id = reply.post_id;
-            reply_user.post_owner = reply.post_owner;
-            reply_user.content = reply.content;
-            reply_user.number_of_likes = reply.number_of_likes;
-            reply_user.number_of_reports = reply.number_of_reports;
+            reply_user.content = content;
         }
 
         ThreadAction::LikeReply(amount) => {
