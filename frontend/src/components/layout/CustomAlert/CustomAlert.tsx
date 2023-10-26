@@ -4,14 +4,18 @@ import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
 import {CreateType, ProgramMetadata, getTypeAndPayload} from "@gear-js/api";
 import {web3FromSource} from "@polkadot/extension-dapp";
 
-
-interface CustomAlertProps {
-	isOpen: boolean;
-	onClose: () => void;
-	onConfirm: (input1: string, input2: string) => void;
+enum PostType {
+	Post,
+	Reply
 }
 
-const CustomAlert: React.FC<CustomAlertProps> = ({isOpen, onClose, onConfirm}) => {
+interface CustomAlertProps {
+	type: PostType
+	isOpen: boolean;
+	onClose: () => void;
+}
+
+const CustomAlert: React.FC<CustomAlertProps> = ({type, isOpen, onClose}) => {
 	const alert = useAlert();
 	const {accounts, account} = useAccount();
 	const {api} = useApi();
@@ -77,15 +81,10 @@ const CustomAlert: React.FC<CustomAlertProps> = ({isOpen, onClose, onConfirm}) =
 		}
 	};
 
-	const handleConfirm = () => {
-		onConfirm(inputValue1, inputValue2);
-		onClose();
-	};
-
 	return isOpen ? (
 		<div className="customAlert">
 			<div className="customAlertContent">
-				<h2>New Post</h2>
+				<h2>New {type === PostType.Post ? "Post" : "Reply"}</h2>
 				<input
 					type="text"
 					placeholder="Title"
