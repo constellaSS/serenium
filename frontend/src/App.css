@@ -34,3 +34,15 @@ body {
     background-position: 0% 50%;
   }
 }
+
+.blue-rectangle {
+  width: 100px; /* Ancho del rectángulo */
+  height: 50px; /* Alto del rectángulo */
+  background-color: blue; /* Color de fondo azul */
+  margin: 10px; /* Espacio exterior para separar los rectángulos */
+  display: inline-block; /* Hace que los rectángulos se muestren en línea */
+}
+.rectangles-container {
+  display: flex; /* Establece un contenedor flexible para los rectángulos */
+  flex-wrap: wrap; /* Permite que los rectángulos se envuelvan si el espacio es insuficiente */
+}
