@@ -17,7 +17,6 @@ fn init() {
     let res = thread.send(2,
     InitThread {
         id: ID,
-        owner: OWNER,
         thread_type: THREAD_TYPE,
         content: CONTENT.parse().unwrap()
     }

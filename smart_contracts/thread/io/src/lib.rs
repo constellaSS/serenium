@@ -4,7 +4,7 @@ use gmeta::{In, InOut, Metadata};
 #[derive(Encode, Decode, TypeInfo)]
 pub struct InitThread {
     pub id: String,
-    pub thread_type: String, // temporary change to string, usually ThreadType
+    pub thread_type: String, // temporary change to string, usually ThreadType enum
     pub title: String,
     pub content: String
 }
@@ -57,6 +57,7 @@ pub enum ThreadAction {
 
 #[derive(Encode, Decode, TypeInfo, PartialEq, Eq, Clone, Debug)]
 pub enum ThreadEvent {
+    NewThreadCreated,
     ThreadEnded,
     ReplyAdded,
     ReplyLiked
