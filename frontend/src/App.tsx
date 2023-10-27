@@ -18,10 +18,6 @@ function Component() {
     <>
       <Header isAccountVisible={isAccountReady} />
       <main>{isAppReady ? <Routing /> : <ApiLoader />}</main>
-        <div>
-            <Post />
-        </div>
-        <PostCard title={'OLA'} content={'xdxdxdxd'} type={1}></PostCard>
     </>
   );
 }
