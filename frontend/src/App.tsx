@@ -5,6 +5,7 @@ import { withProviders } from 'hocs';
 import './normalize.css';
 import Post from "./components/layout/post/post";
 import PostCard from "./components/layout/PostCard/PostCard";
+import rectangles from "./components/layout/PostCard/PostCard";
 import {useState} from "react";
 
 function Component() {

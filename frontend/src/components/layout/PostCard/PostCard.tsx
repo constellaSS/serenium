@@ -106,12 +106,12 @@ function PostCard ({title, content, type}: Props) {
 					<button id="postCardBan" className="postCardActionButton" type="button"/>
 				</div>
 				<button onClick={addRectangle} className="cardPostAddButton" type="button"/>
-				<div className="rectangles-container">
-					{rectangles}
-				</div>
+			</div>
+			<div className="rectangles-container">
+				{rectangles}
 			</div>
 		</div>
-	)
+	);
 }
 
 export default PostCard;
