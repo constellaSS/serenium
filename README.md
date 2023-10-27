@@ -10,7 +10,7 @@ cd frontend
 ```
 yarn install
 ```
-3. Run the command ```yarn start``` to start the development localhost.
+3. Run the command ```yarn start``` to start the development localhost, so you can see the frontend.
 4. Make sure to create the ```.env``` file on the frontend directory, where you should add the Vara testnet WSS:
 ```
 REACT_APP_NODE_ADDRESS=wss://testnet.vara-network.io
