@@ -6,7 +6,10 @@
 ```
 cd frontend
 ```
-2. Make sure to install all required dependencies
+2. Make sure to install all required dependencies:
+```
+yarn install
+```
 3. Run the command ```yarn start``` to start the development localhost.
 4. Make sure to create the ```.env``` file on the frontend directory, where you should add the Vara testnet WSS:
 ```
