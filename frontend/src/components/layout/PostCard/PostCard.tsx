@@ -82,11 +82,12 @@ function PostCard ({title, content, type}: Props) {
 
 	const [rectangles, setRectangles] = useState([]);
 
-	const addRectangle = () => {
-		const newRectangles = [...rectangles];
+	const addPostCard = () => {
+		const newPostCards = [...rectangles]; // Assuming rectangles is the state you're using to store PostCards
+		// Add a new PostCard element instead of a div
 		// @ts-ignore
-		newRectangles.push(<div key={newRectangles.length} className="blue-rectangle"></div>);
-		setRectangles(newRectangles);
+		newPostCards.push(<PostCard title={'Lorem'} content={'Ipsum'} type={1} />);
+		setRectangles(newPostCards);
 	};
 
 	return (
@@ -105,7 +106,7 @@ function PostCard ({title, content, type}: Props) {
 					<CustomAlert type={1} isOpen={showAlert} onClose={() => setShowAlert(false)}/>
 					<button id="postCardBan" className="postCardActionButton" type="button"/>
 				</div>
-				<button onClick={addRectangle} className="cardPostAddButton" type="button"/>
+				<button onClick={addPostCard} className="cardPostAddButton" type="button"/>
 			</div>
 			<div className="rectangles-container">
 				{rectangles}
