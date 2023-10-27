@@ -16,7 +16,7 @@ function LocalBalanceToken() {
 
  // Add your programID
  const programIDFT =
- "0x2b459b4647b090088a807594c9ada8811ebabca270633547531ca602df3a8f7a";
+ "0x863d83a4462220e6d0af303d5054df47f4d1dc6426a9932920b92ee9b1ac4b78";
 
 // Add your metadata.txt
 const meta =
