@@ -6,6 +6,7 @@ import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
 import {web3FromSource} from "@polkadot/extension-dapp";
 import {useState} from "react";
 import CustomAlert from "../CustomAlert/CustomAlert";
+import Post from "../post/post"
 
 interface Props {
 	title: string;
@@ -106,9 +107,7 @@ function PostCard ({title, content, type}: Props) {
 					<button id="postCardBan" className="postCardActionButton" type="button"/>
 				</div>
 				<button onClick={addRectangle} className="cardPostAddButton" type="button"/>
-				<div className="rectangles-container">
-					{rectangles}
-				</div>
+				<Post rectangles={rectangles} />
 			</div>
 		</div>
 	)

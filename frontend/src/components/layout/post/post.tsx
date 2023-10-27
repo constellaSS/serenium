@@ -1,9 +1,14 @@
 import React from 'react';
 import './post.css';
-    const Post = () => {
+const Post = ({ rectangles }) => {
     return (
-        <div className="blue-rectangle"></div>
+        <div>
+            <div className="rectangles-container">
+                {rectangles}
+            </div>
+        </div>
     );
 };
+
 
 export default Post;

@@ -1,5 +1,11 @@
 .blue-rectangle {
-    width: 200px; /* Ancho del rectángulo */
-    height: 100px; /* Alto del rectángulo */
+    width: 100px; /* Ancho del rectángulo */
+    height: 50px; /* Alto del rectángulo */
     background-color: blue; /* Color de fondo azul */
+    margin: 10px; /* Espacio exterior para separar los rectángulos */
+    display: inline-block; /* Hace que los rectángulos se muestren en línea */
+}
+.rectangles-container {
+    display: flex; /* Establece un contenedor flexible para los rectángulos */
+    flex-wrap: wrap; /* Permite que los rectángulos se envuelvan si el espacio es insuficiente */
 }
