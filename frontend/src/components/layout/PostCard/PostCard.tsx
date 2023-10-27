@@ -80,6 +80,15 @@ function PostCard ({title, content, type}: Props) {
 		setShowAlert(true);
 	};
 
+	const [rectangles, setRectangles] = useState([]);
+
+	const addRectangle = () => {
+		const newRectangles = [...rectangles];
+		// @ts-ignore
+		newRectangles.push(<div key={newRectangles.length} className="blue-rectangle"></div>);
+		setRectangles(newRectangles);
+	};
+
 	return (
 		<div className="postCard">
 			{type ? (
@@ -96,7 +105,10 @@ function PostCard ({title, content, type}: Props) {
 					<CustomAlert type={1} isOpen={showAlert} onClose={() => setShowAlert(false)}/>
 					<button id="postCardBan" className="postCardActionButton" type="button"/>
 				</div>
-				<button className="cardPostAddButton" type="button"/>
+				<button onClick={addRectangle} className="cardPostAddButton" type="button"/>
+				<div className="rectangles-container">
+					{rectangles}
+				</div>
 			</div>
 		</div>
 	)

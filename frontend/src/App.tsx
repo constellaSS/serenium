@@ -13,16 +13,6 @@ function Component() {
 
   const isAppReady = isApiReady && isAccountReady;
 
-  const [showRectangles, setShowRectangles] = useState(false);
-  const numberOfRectangles = 5; // Número de rectángulos a mostrar
-    const generateRectangles = () => {
-        setShowRectangles(true);
-    };
-
-    const rectangles = Array.from({ length: numberOfRectangles }, (_, index) => (
-        <div key={index} className="blue-rectangle"></div>
-    ));
-
   return (
     <>
       <Header isAccountVisible={isAccountReady} />
@@ -31,15 +21,6 @@ function Component() {
             <Post />
         </div>
         <PostCard title={'OLA'} content={'xdxdxdxd'} type={1}></PostCard>
-        <div>
-            <h1>Generador de Rectángulos Azules</h1>
-            <button onClick={generateRectangles}>Mostrar Rectángulos</button>
-            {showRectangles && (
-                <div className="rectangle-container">
-                    {rectangles}
-                </div>
-            )}
-        </div>
     </>
   );
 }
