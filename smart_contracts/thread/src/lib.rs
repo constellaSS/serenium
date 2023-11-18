@@ -11,7 +11,7 @@ include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
 struct Thread {
     id: String,
     owner: ActorId,
-    thread_type: String,
+    thread_type: ThreadType,
     title: String,
     content: String,
     replies: HashMap<ActorId, ThreadReply>,
@@ -147,12 +147,10 @@ async fn main() {
             let reply_user = thread.replies.entry(msg::source()).or_insert(ThreadReply {
                 post_id: 0,
                 post_owner: msg::source(),
-                content: 0.to_string(),
+                content,
                 number_of_likes: 0,
                 number_of_reports: 0,
             });
-
-            reply_user.content = content;
         }
 
         ThreadAction::LikeReply(amount) => {
@@ -166,6 +164,7 @@ async fn main() {
             let &winner = thread.find_winner().expect("Winner not found");
             thread.tokens_transfer_reward(1, winner).await;
         }
+
     };
 }
 
