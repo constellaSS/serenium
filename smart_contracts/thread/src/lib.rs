@@ -20,7 +20,6 @@ struct Thread {
     participants: HashMap<ActorId, u128>,
     state: ThreadState,
     distributed_tokens: u128,
-    // TODO: Add a graph_rep field
     graph_rep: HashMap<String, Vec<String>>
 }
 
