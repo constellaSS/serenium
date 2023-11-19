@@ -13,7 +13,7 @@ interface Props {
 	title: string;
 	content: string;
 	type: number;
-	threadState: ThreadState | undefined
+	threadState?: ThreadState | undefined
 }
 
 function PostCard ({title, content, type, threadState}: Props) {
@@ -33,15 +33,19 @@ function PostCard ({title, content, type, threadState}: Props) {
 	};
 
 	return (
-		<div className={"post-replies-container"}>
-			<div className="postCard">
-				{type ? (
-					<CardHeaderQuestion/>
-				) : (
-					<CardHeaderChallenge/>
-				)}
-				<h2 className="postCardTitle">{title}</h2>
-				<p className="postCardContent">{content}</p>
+		<div className="postCard" onClick={() => {
+			window.location.href = '/full-post'
+		}}>
+			{type ? (
+				<CardHeaderQuestion/>
+			) : (
+				<CardHeaderChallenge/>
+			)}
+			<div className={"post-card-body"}>
+				<div className={"post-card-info"}>
+					<h2 className="postCardTitle">{title}</h2>
+					<p className="postCardContent">{content}</p>
+				</div>
 				<div className="postCardButtonOutsideContainer">
 					<div className="postCardButtonInerContainer">
 						<button id="postCardSave" className="postCardActionButton" type="button"/>
@@ -52,13 +56,7 @@ function PostCard ({title, content, type, threadState}: Props) {
 					<button className="cardPostAddButton" type="button" onClick={handleShowAlert}/>
 				</div>
 			</div>
-			<div className={"replies-container"}>
-				{threadState?.replies.map(replyHM => (
-					<Reply owner={replyHM[0]} content={replyHM[1].content}/>
-				))}
-			</div>
 		</div>
-
 	)
 }
 

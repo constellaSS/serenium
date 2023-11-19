@@ -1,0 +1,11 @@
+.post-replies-container {
+    width: 100vw;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    background-color: #1E1E1E;
+    gap: 2vh;
+    height: 100vh;
+    padding-top: 10vh;
+    align-items: center;
+}

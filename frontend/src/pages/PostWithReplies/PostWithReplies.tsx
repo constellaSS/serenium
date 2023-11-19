@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import './postContainer.css';
-import PostCard from '../PostCard/PostCard';
+import PostCard from '../../components/layout/PostCard/PostCard';
 import { useAlert, useApi } from '@gear-js/react-hooks';
 import { ProgramMetadata } from '@gear-js/api';
-import Reply from '../Reply/Reply'
+import Reply from '../../components/layout/Reply/Reply'
+import NavBar from "../../components/layout/NavBar/NavBar";
+import './PostWithReplies.css'
 
 type ThreadState = {
 	id: string;
@@ -25,11 +26,10 @@ type Reply = {
 	"numberOfReports": "0"
 }
 
-function PostContainer() {
+function PostWithReplies() {
 	const { api } = useApi();
 	const [threadState, setThreadState] = useState<ThreadState>();
 	const alert = useAlert();
-
 
 	type Reply = {
 		postId: string,
@@ -60,17 +60,24 @@ function PostContainer() {
 		getState();
 	}, []);
 	return (
-		<div className="postContainer">
-			<PostCard
-				title={threadState?.title || ''}
-				content={threadState?.content || ''}
-				type={threadState?.threadType === 'Challenge' ? 0 : 1}
-				threadState={threadState}
-			/>
-			<PostCard title={"Dummy Title"} content={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."} type={1} threadState={threadState}/>
-		</div>
+		<>
+			<div className={"post-replies-container"}>
+				<PostCard
+					title={threadState?.title || ''}
+					content={threadState?.content || ''}
+					type={threadState?.threadType === 'Challenge' ? 0 : 1}
+					threadState={threadState}
+				/>
+				<div className={"replies-container"}>
+					{threadState?.replies.map(replyHM => (
+						<Reply owner={replyHM[0]} content={replyHM[1].content}/>
+					))}
+				</div>
+			</div>
+			<NavBar/>
+		</>
 	);
 }
 
-export default PostContainer;
+export default PostWithReplies;
 export type {ThreadState};
