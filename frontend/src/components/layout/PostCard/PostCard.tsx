@@ -33,27 +33,32 @@ function PostCard ({title, content, type, threadState}: Props) {
 	};
 
 	return (
-		<div className="postCard">
-			{type ? (
-				<CardHeaderQuestion/>
-			) : (
-				<CardHeaderChallenge/>
-			)}
-			<h2 className="postCardTitle">{title}</h2>
-			<p className="postCardContent">{content}</p>
-			<div className="postCardButtonOutsideContainer">
-				<div className="postCardButtonInerContainer">
-					<button id="postCardSave" className="postCardActionButton" type="button"/>
-					<button id="postCardShare" className="postCardActionButton" type="button"/>
-					<CustomAlert type={1} isOpen={showAlert} onClose={() => setShowAlert(false)}/>
-					<button id="postCardBan" className="postCardActionButton" type="button"/>
+		<div className={"post-replies-container"}>
+			<div className="postCard">
+				{type ? (
+					<CardHeaderQuestion/>
+				) : (
+					<CardHeaderChallenge/>
+				)}
+				<h2 className="postCardTitle">{title}</h2>
+				<p className="postCardContent">{content}</p>
+				<div className="postCardButtonOutsideContainer">
+					<div className="postCardButtonInerContainer">
+						<button id="postCardSave" className="postCardActionButton" type="button"/>
+						<button id="postCardShare" className="postCardActionButton" type="button"/>
+						<CustomAlert type={1} isOpen={showAlert} onClose={() => setShowAlert(false)}/>
+						<button id="postCardBan" className="postCardActionButton" type="button"/>
+					</div>
+					<button className="cardPostAddButton" type="button" onClick={handleShowAlert}/>
 				</div>
-				<button className="cardPostAddButton" type="button" onClick={handleShowAlert}/>
 			</div>
-			{threadState?.replies.map(replyHM => (
-				<Reply owner={replyHM[0]} content={replyHM[1].content}/>
-			))}
+			<div className={"replies-container"}>
+				{threadState?.replies.map(replyHM => (
+					<Reply owner={replyHM[0]} content={replyHM[1].content}/>
+				))}
+			</div>
 		</div>
+
 	)
 }
 

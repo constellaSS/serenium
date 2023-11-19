@@ -74,14 +74,10 @@ function Reply ({owner, content}: Props) {
 
 	return (
 		<div className="replyCard">
-			<h2 className="postCardTitle">Reply <span className="owner-text">{owner}</span></h2>
-			<p className="postCardContent">{content}</p>
-			<div className="postCardButtonOutsideContainer">
-				<div className="postCardButtonInerContainer">
-					<button id={"postCardLike"} className={"postCardActionButton"} type={"button"} onClick={signer}/>
-					<button id="postCardShare" className="postCardActionButton" type="button"/>
-					<button id="postCardBan" className="postCardActionButton" type="button"/>
-				</div>
+			<h2 className="replyTitle">Lorem Ipsum</h2>
+			<p className={"replyContent"}>Simple – it's my joystick for the mind! ☕The caffeine kick keeps me alert, the warmth of the cup is like a hug during intense moments.</p>
+			<div className={"replyIconContainer"}>
+				<div className={"replyIcon"}></div>
 			</div>
 		</div>
 	)

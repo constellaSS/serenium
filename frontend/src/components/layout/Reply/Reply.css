@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'Japandi';
     src: local('Japandi Bold'), local('JapandiBold'),
@@ -19,9 +20,8 @@
 }
 
 
-
 .postCard{
-    width: 85vw;
+    width: 100%;
     min-height: 35vh;
     background-color: #1E1E1E;
     border-radius: 8px;
@@ -30,17 +30,70 @@
     justify-content: space-between;
 }
 
-.replyCard{
-    width: 85vw;
-    min-height: 20vh;
-    background-color: #1E1E1E;
+.post-replies-container {
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    background-color: #1E1E1E;
+    margin: 0 5%;
+    min-height: fit-content;
+    max-height: 85vh;
+    gap: 3vh;
+    padding-bottom: 5vh;
+}
+
+.replies-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+    margin: 0 2%;
+}
+
+.replyCard{
+    font-family: 'Japandi',sans-serif;
+    min-height: fit-content;
+    height: fit-content;
+    max-height: 15vh;
+    background-color: #282828;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 25% 75%;
     justify-content: space-between;
-    margin-left: 5%;
-    padding: 2%;
-    max-width: 95%;
+    padding: 3%;
+    width: 100%;
+}
+
+.replyTitle {
+    margin: 0;
+    font-size: 1rem;
+    grid-row: 1;
+    grid-column: 1 / 2;
+    width: fit-content;
+    height: fit-content;
+}
+
+.replyContent {
+    font-size: 0.7rem;
+    margin: 0;
+    grid-row: 2 / 3;
+}
+
+.replyIcon {
+    width: 8vh;
+    height: 8vh;
+    border: none;
+    background-color: transparent;
+    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/reply_text_question.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.replyIconContainer {
+    grid-column: 2 / 3;
+    grid-row: 1 / -1;
+    padding: 10%;
 }
 
 .cardHeader{
@@ -89,7 +142,7 @@
     height: 6.8vh;
     border: none;
     background-color: transparent;
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/AddPostBtn.svg");
+    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/AddPostBtn.svg");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -108,17 +161,17 @@
 
 #postCardLike{
 
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/postCardLike.svg")
+    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/postCardLike.svg")
 }
 
 
 #postCardSave{
 
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/postCardSave.svg")
+    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/postCardSave.svg")
 }
 #postCardShare{
 
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/postCardShare.svg")
+    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/postCardShare.svg")
 }
 #postCardBan{
     background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/postCardBan.svg")

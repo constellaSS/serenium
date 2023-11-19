@@ -42,14 +42,13 @@
     border-radius:8px 8px 0 0;
 }
 .cardHeaderQuestion{
-   background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/headerBgQuestion.svg");
+   background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/headerBgQuestion.svg");
 }
 .cardHeaderChallenge{
-   background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/headerBgChallenge.svg");
+   background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/headerBgChallenge.svg");
 }
 .postCardTitle{
     font-family: 'Japandi',sans-serif;
-    margin: 2%;
     font-size: 5.5vw;
 }
 .postCardContent{
@@ -65,8 +64,6 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-end;
-
-
 }
 .postCardButtonInerContainer{
     width: 55%;
