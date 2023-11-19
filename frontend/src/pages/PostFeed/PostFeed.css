@@ -1,9 +1,16 @@
-.post-feed {
+.post-feed-container {
     margin-top: 2vh;
     width: 100vw;
-    max-height: 92.5vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 2.5vh;
     align-items: center;
+    overflow: scroll;
+    margin-bottom: 10vh;
+}
+
+.post-feed-page {
+    width: 100vw;
+    height: 100vh;
 }

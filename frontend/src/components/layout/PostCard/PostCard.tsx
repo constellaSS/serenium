@@ -17,10 +17,8 @@ interface Props {
 }
 
 function PostCard ({title, content, type, threadState}: Props) {
-	const alert = useAlert();
-	const {accounts, account} = useAccount();
-	const {api} = useApi();
 	const [showAlert, setShowAlert] = useState(false);
+	const [repliesShown, setRepliesShown] = useState(false);
 
 	// TODO: Get these variables from env file
 	const programIDThread = "0x4eabc8f612ac98b4c5ff37315d31dd61c5f9288038d3d041e321973c70712693";
@@ -34,7 +32,11 @@ function PostCard ({title, content, type, threadState}: Props) {
 
 	return (
 		<div className="postCard" onClick={() => {
-			window.location.href = '/full-post'
+			if (!repliesShown) {
+				window.location.href = '/full-post'
+				setRepliesShown(true);
+			}
+			console.log(repliesShown)
 		}}>
 			{type ? (
 				<CardHeaderQuestion/>
