@@ -1,17 +1,20 @@
 #![no_std]
-use gstd::{ prelude::*, ActorId };
+use gstd::{ prelude::*, ActorId, HashMap as GHashMap };
 use gmeta::{In, InOut, Metadata};
+
+extern crate alloc;
+
 #[derive(Encode, Decode, TypeInfo)]
 pub struct InitThread {
     pub id: String,
-    pub thread_type: String, // temporary change to string, usually ThreadType enum
+    pub thread_type: ThreadType, // temporary change to string, usually ThreadType enum
     pub title: String,
     pub content: String
 }
 
 #[derive(Encode, Decode, TypeInfo, PartialEq, Eq, Clone, Debug)]
 pub struct ThreadReply {
-    pub post_id: u128,
+    pub post_id: String,
     pub post_owner: ActorId,
     pub content: String,
     pub number_of_likes: u128,
@@ -22,13 +25,14 @@ pub struct ThreadReply {
 pub struct Thread {
     id: String,
     owner: ActorId,
-    thread_type: String,
+    thread_type: ThreadType,
     title: String,
     content: String,
     replies: Vec<ThreadReply>,
     participants:Vec<(ActorId, u128)>,
     state: ThreadState,
-    distributed_tokens: u128
+    distributed_tokens: u128,
+    graph: Vec<(String, Vec<String>)>
 }
 
 #[derive( Encode, Decode, Clone, TypeInfo)]
@@ -51,7 +55,7 @@ pub enum ThreadState {
 pub enum ThreadAction {
     NewThread(InitThread),
     EndThread,
-    AddReply(String), // only need the content
+    AddReply(String, String, String),
     LikeReply(u128)
 }
 
@@ -82,7 +86,6 @@ pub enum FTAction {
     BalanceOf(ActorId),
 }
 
-
 #[derive(Encode, Decode, TypeInfo)]
 pub enum FTEvent {
     Ok,
@@ -98,17 +101,18 @@ pub struct InitFT {
     pub ft_program_id: ActorId,
 }
 
-#[derive(Encode, Decode, TypeInfo)]
+#[derive(Default, Clone, Encode, Decode, TypeInfo)]
 pub struct IoThread {
     pub id: String,
     pub owner: ActorId,
-    pub thread_type: String,
+    pub thread_type: ThreadType,
     pub title: String,
     pub content: String,
-    pub replies: Vec<(ActorId,ThreadReply)>,
+    pub replies: Vec<(ActorId, ThreadReply)>,
     pub participants:Vec<(ActorId, u128)>,
     pub state: ThreadState,
-    pub distributed_tokens: u128
+    pub distributed_tokens: u128,
+    pub graph_rep: Vec<(String, Vec<String>)>
 }
 
 pub struct ContractMetadata;

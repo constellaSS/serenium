@@ -1,4 +1,6 @@
 #![no_std]
+extern crate alloc;
+
 use gmeta::Metadata;
 use hashbrown::HashMap;
 use io::*;
@@ -11,47 +13,18 @@ include!(concat!(env!("OUT_DIR"), "/wasm_binary.rs"));
 struct Thread {
     id: String,
     owner: ActorId,
-    thread_type: String,
+    thread_type: ThreadType,
     title: String,
     content: String,
     replies: HashMap<ActorId, ThreadReply>,
     participants: HashMap<ActorId, u128>,
     state: ThreadState,
-    distributed_tokens: u128
+    distributed_tokens: u128,
+    // TODO: Add a graph_rep field
+    graph_rep: HashMap<String, Vec<String>>
 }
 
 impl Thread {
-    async fn add_liquidity( &mut self, amount_tokens: u128) {
-        let current_state = thread_state_mut();
-        let address_ft = addresft_state_mut();
-        let payload = FTAction::Burn(amount_tokens);
-        let result =  msg::send_for_reply_as::<_, FTEvent>(address_ft.ft_program_id,payload,0,0).expect("Error in sending a message").await;
-        current_state.participants.entry(msg::source()).or_insert(amount_tokens); 
-
-        let _ = match result {
-            Ok(event) => match event {
-                FTEvent::Ok => Ok(()),
-                _ => Err(()),
-            },
-            Err(_) => Err(()),
-        };
-    }
-
-    async fn remove_liquidity(&mut self, amount_tokens: u128){
-        let current_state = thread_state_mut();
-        let address_ft = addresft_state_mut();           
-        let payload = FTAction::Mint(amount_tokens);     
-        let result =  msg::send_for_reply_as::<_, FTEvent>(address_ft.ft_program_id,payload,0,0).expect("Error in sending a message").await;
-        current_state.participants.entry(msg::source()).or_insert(amount_tokens);
-
-        let _ = match result {
-            Ok(event) => match event {
-                FTEvent::Ok => Ok(()),
-                _ => Err(()),
-            },
-            Err(_) => Err(()),
-        };
-    }
 
     async fn tokens_transfer_reward(&mut self, amount_tokens: u128, dest: ActorId) {
         let address_ft = addresft_state_mut();           
@@ -137,22 +110,28 @@ async fn main() {
             new_thread.title = init_thread.title;
             new_thread.content = init_thread.content;
             new_thread.state = ThreadState::Active;
+            new_thread.graph_rep = HashMap::new();
+            // Immediately push thread id to graph
+            new_thread.graph_rep.insert(new_thread.id.clone(), Vec::new());
 
             new_thread.tokens_transfer_pay(1).await;
         }
 
-        ThreadAction::AddReply(content) => {
+        ThreadAction::AddReply(content, reply_id, post_id) => {
             let thread = thread_state_mut();
             
             let reply_user = thread.replies.entry(msg::source()).or_insert(ThreadReply {
-                post_id: 0,
+                post_id: reply_id.clone(),
                 post_owner: msg::source(),
-                content: 0.to_string(),
+                content,
                 number_of_likes: 0,
                 number_of_reports: 0,
             });
 
-            reply_user.content = content;
+            // push reply to the graph representation
+            if let Some(adj_list) = thread.graph_rep.get_mut(&post_id) {
+                adj_list.push(reply_id.clone());
+            }
         }
 
         ThreadAction::LikeReply(amount) => {
@@ -195,10 +174,12 @@ fn common_state() -> <ContractMetadata as Metadata>::State {
         participants,
         state,
         distributed_tokens,
+        graph_rep
     } = state.clone();
 
     let participants = participants.iter().map(|(k, v)| (*k, v.clone())).collect();
     let replies = replies.iter().map(|(k, v)| (*k, v.clone())).collect();
+    let graph_rep = graph_rep.iter().map(|(k, v)| (k.clone(), v.clone())).collect();
 
     IoThread {
         id,
@@ -210,6 +191,7 @@ fn common_state() -> <ContractMetadata as Metadata>::State {
         participants,
         state,
         distributed_tokens,
+        graph_rep
     }
 }
 

@@ -3,7 +3,6 @@ name = "thread"
 version = "0.1.0"
 edition = "2021"
 
-
 [dependencies]
 io = { path = "io" }
 gstd = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
@@ -16,7 +15,6 @@ hashbrown = "0.14"
 io = { path = "io" }
 gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
 gmeta = { git = "https://github.com/gear-tech/gear.git", rev = "946ac47" }
-
 
 [dev-dependencies]
 state = { path = "state" }
