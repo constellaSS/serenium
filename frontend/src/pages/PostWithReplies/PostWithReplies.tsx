@@ -5,6 +5,7 @@ import { ProgramMetadata } from '@gear-js/api';
 import Reply from '../../components/layout/Reply/Reply'
 import NavBar from "../../components/layout/NavBar/NavBar";
 import './PostWithReplies.css'
+import ReplyPhoto from "../../components/layout/Reply/ReplyPhoto/ReplyPhoto";
 
 type ThreadState = {
 	id: string;
@@ -70,7 +71,7 @@ function PostWithReplies() {
 				/>
 				<div className={"replies-container"}>
 					{threadState?.replies.map(replyHM => (
-						<Reply owner={replyHM[0]} content={replyHM[1].content}/>
+						<ReplyPhoto title={"Lorem ipsum"}/>
 					))}
 				</div>
 			</div>

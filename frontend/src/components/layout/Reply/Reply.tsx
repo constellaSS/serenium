@@ -14,6 +14,7 @@ function Reply ({owner, content}: Props) {
 	const {accounts, account} = useAccount();
 	const {api} = useApi();
 	const [showAlert, setShowAlert] = useState(false);
+	const [hasPhoto, setHasPhoto] = useState(false);
 
 	// TODO: Get these variables from env file
 	const programIDThread = "0x98c4ec4c91b2831a97099d4c25f78857c2f7dc8127c1fcffc74d433ff59a15d4";

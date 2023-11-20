@@ -1,0 +1,38 @@
+.reply-photo-container {
+    position: relative;
+    width: 95vw;
+    height: 12vh;
+    background-image: url("../../../../../../../serenium/frontend/src/assets/images/icons/sample_photo.png");
+    font-family: 'Japandi',sans-serif;
+    border-radius: 12px;
+}
+
+.title-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: fit-content;
+    background-color: #ffffff;
+    width: 50vw;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.title {
+    font-size: 1rem;
+    margin-block: 0.25em;
+    padding-left: 2vw;
+}
+
+.reply-photo-icon-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-position: right;
+    background-size: contain;
+    background-image: url("../../../../../../../serenium/frontend/src/assets/images/icons/reply_photo_question.svg");
+    background-repeat: no-repeat;
+}
