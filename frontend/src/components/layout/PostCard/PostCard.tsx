@@ -2,11 +2,8 @@ import './postCard.css'
 import CardHeaderQuestion from "./CardHeaderQuestion";
 import CardHeaderChallenge from "./CardHeaderChallenge";
 import {ProgramMetadata} from "@gear-js/api";
-import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
-import {web3FromSource} from "@polkadot/extension-dapp";
 import {useState} from "react";
 import CustomAlert from "../CustomAlert/CustomAlert";
-import Reply from "../Reply/Reply";
 import {ThreadState} from '../PostContainer/PostContainer'
 
 interface Props {
@@ -19,6 +16,7 @@ interface Props {
 function PostCard ({title, content, type, threadState}: Props) {
 	const [showAlert, setShowAlert] = useState(false);
 	const [repliesShown, setRepliesShown] = useState(false);
+	const [postExpired, setPostExpired] = useState(true);
 
 	// TODO: Get these variables from env file
 	const programIDThread = "0x4eabc8f612ac98b4c5ff37315d31dd61c5f9288038d3d041e321973c70712693";
@@ -31,13 +29,16 @@ function PostCard ({title, content, type, threadState}: Props) {
 		setShowAlert(true);
 	};
 
+	const cardPostAddButton = 'cardPostAddButton';
+	const cardPostAddButtonBlocked = postExpired ? 'cardPostAddButtonBlocked' : '';
+	const compoundClassName = `${cardPostAddButton} ${cardPostAddButtonBlocked}`;
+
 	return (
 		<div className="postCard" onClick={() => {
 			if (!repliesShown) {
 				window.location.href = '/full-post'
 				setRepliesShown(true);
 			}
-			console.log(repliesShown)
 		}}>
 			{type ? (
 				<CardHeaderQuestion/>
@@ -56,7 +57,7 @@ function PostCard ({title, content, type, threadState}: Props) {
 						<CustomAlert type={1} isOpen={showAlert} onClose={() => setShowAlert(false)}/>
 						<button id="postCardBan" className="postCardActionButton" type="button"/>
 					</div>
-					<button className="cardPostAddButton" type="button" onClick={handleShowAlert}/>
+					<button className={compoundClassName}  type="button" onClick={handleShowAlert}/>
 				</div>
 			</div>
 		</div>

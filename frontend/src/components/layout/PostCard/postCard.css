@@ -76,13 +76,17 @@
     height: 6.8vh;
     border: none;
     background-color: transparent;
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/AddPostBtn.svg");
+    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/AddPostBtn.svg");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     margin-bottom: 5vw;
-
 }
+
+.cardPostAddButtonBlocked {
+    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/lock.svg");
+}
+
 .postCardActionButton{
     width: 8.5vw;
     height: 8.5vw;
@@ -105,7 +109,7 @@
 
 #postCardSave{
 
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/postCardSave.svg")
+    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/postCardSave.svg")
 }
 #postCardShare{
 
