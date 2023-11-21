@@ -7,6 +7,7 @@
     flex-direction: row;
     gap: 5vw;
     align-content: center;
+    align-items: center;
     justify-content: space-around;
     background-color: #121212;
 }
@@ -14,7 +15,7 @@
 .logoTextSerenium{
     width: 40vw;
     margin: 1vw;
-    height: auto;
+    height: 40vw;
     background-color:transparent;
     background-image: url("./../../../assets/images/icons/sereniumText.svg");
     background-position: center;
@@ -26,13 +27,13 @@
     width: 5.5vh;
     height: 5.5vh;
     background-color: transparent;
-
     background-image: url("./../../../assets/images/icons/sideMenuIcon.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     border: none;
 }
+
 .walletValue {
     color: white;
     font-family: 'Japandi',sans-serif;
@@ -43,6 +44,7 @@
     align-items: center;
     font-size: 4vw;
 }
+
 .accountButtonPol{
     background-color: transparent;
     border: none;
@@ -51,10 +53,32 @@
     font-size: 4.5vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 100%;
     gap: 2vw;
 }
+
 .token-balance {
     font-size: 0.5em;
+}
+
+.back-btn {
+    width: 5.5vh;
+    height: 5vh;
+    border: none;
+    background-color: transparent;
+    background-image: url("./../../../assets/images/icons/back-btn.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-serenium {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    background-image: url("./../../../assets/images/icons/logo-serenium.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
