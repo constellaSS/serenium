@@ -6,13 +6,17 @@ import CustomAlert from "../../components/layout/CustomAlert/CustomAlert";
 function PostImage() {
     return (
         <div className={"post-feed-page"}>
-            <div className={"Nav"}>
-                <h2 className="postCardTitle">Titulo</h2>
-                <div className="postCardButtonOutsideContainer">
-                    <div className="postCardButtonInerContainer">
-                        <button id="postCardSave" className="postCardActionButton" type="button"/>
-                        <button id="postCardShare" className="postCardActionButton" type="button"/>
-                        <button id="postCardBan" className="postCardActionButton" type="button"/>
+            <div className={"contentWrapper"}>
+                <div className={"Nav"}>
+                    <div className={"info"}>
+                        <h2 className="postCardTitle">Titulo</h2>
+                    </div>
+                    <div className="postCardButtonOutsideContainer">
+                        <div className="postCardButtonInerContainer">
+                            <button id="postCardSave" className="postCardActionButton" type="button"/>
+                            <button id="postCardShare" className="postCardActionButton" type="button"/>
+                            <button id="postCardBan" className="postCardActionButton" type="button"/>
+                        </div>
                     </div>
                 </div>
             </div>
