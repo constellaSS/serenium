@@ -1,5 +1,5 @@
 import react from "react"
-import './postCard.css'
+import './PostCard.css'
 
 function CardHeaderChallenge(){
     return(

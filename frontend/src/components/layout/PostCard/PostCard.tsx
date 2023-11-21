@@ -1,21 +1,21 @@
-import './postCard.css'
+import './PostCard.css'
 import CardHeaderQuestion from "./CardHeaderQuestion";
 import CardHeaderChallenge from "./CardHeaderChallenge";
 import {ProgramMetadata} from "@gear-js/api";
 import {useState} from "react";
 import CustomAlert from "../CustomAlert/CustomAlert";
 import {ThreadState} from '../PostContainer/PostContainer'
+import Tag from "../Tag/Tag";
 
-interface Props {
+interface PostCardProps {
 	title: string;
 	content: string;
 	type: number;
 	threadState?: ThreadState | undefined
 }
 
-function PostCard ({title, content, type, threadState}: Props) {
+function PostCard ({title, content, type, threadState}: PostCardProps) {
 	const [showAlert, setShowAlert] = useState(false);
-	const [repliesShown, setRepliesShown] = useState(false);
 	const [postExpired, setPostExpired] = useState(true);
 
 	// TODO: Get these variables from env file
@@ -35,10 +35,7 @@ function PostCard ({title, content, type, threadState}: Props) {
 
 	return (
 		<div className="postCard" onClick={() => {
-			if (!repliesShown) {
-				window.location.href = '/full-post'
-				setRepliesShown(true);
-			}
+			window.location.href = '/full-post'
 		}}>
 			{type ? (
 				<CardHeaderQuestion/>
@@ -49,6 +46,10 @@ function PostCard ({title, content, type, threadState}: Props) {
 				<div className={"post-card-info"}>
 					<h2 className="postCardTitle">{title}</h2>
 					<p className="postCardContent">{content}</p>
+				</div>
+				<div className={"tags-container"}>
+					<Tag name={"lorem"}/>
+					<Tag name={"ipsum"}/>
 				</div>
 				<div className="postCardButtonOutsideContainer">
 					<div className="postCardButtonInerContainer">

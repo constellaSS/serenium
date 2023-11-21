@@ -18,13 +18,14 @@
     font-display: swap;
 }
 
-.postCard{
+.post-card-body{
     min-height: fit-content;
     width: 90vw;
     background-color: #1E1E1E;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+    padding: 3%;
 }
 
 .cardHeader{
@@ -71,6 +72,7 @@
     align-items: center;
     margin-bottom: 3vw;
 }
+
 .cardPostAddButton{
     width: 6.8vh;
     height: 6.8vh;
@@ -97,24 +99,27 @@
     background-repeat: no-repeat;
 }
 
-.post-card-info {
-    padding: 3%;
+.tags-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
 }
+
+/*.post-card-info {*/
+/*    padding: 3%;*/
+/*}*/
 
 #postCardLike{
-
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/postCardLike.svg")
+    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/postCardLike.svg")
 }
 
-
 #postCardSave{
-
     background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/postCardSave.svg")
 }
 #postCardShare{
 
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/postCardShare.svg")
+    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/postCardShare.svg")
 }
 #postCardBan{
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/postCardBan.svg")
+    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/postCardBan.svg")
 }
