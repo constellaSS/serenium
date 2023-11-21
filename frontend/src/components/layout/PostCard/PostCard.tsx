@@ -72,16 +72,16 @@ function PostCard () {
 	const compoundClassName = `${cardPostAddButton} ${cardPostAddButtonBlocked}`;
 
 	return (
-		<div className="postCard" onClick={() => {
-			window.location.href = '/full-post'
-		}}>
+		<div className="postCard">
 			{threadState?.threadType ? (
 				<CardHeaderQuestion/>
 			) : (
 				<CardHeaderChallenge/>
 			)}
 			<div className={"post-card-body"}>
-				<div className={"post-card-info"}>
+				<div className={"post-card-info"} onClick={() => {
+					window.location.href = '/full-post'
+				}}>
 					<h2 className="postCardTitle">{threadState?.title}</h2>
 					<p className="postCardContent">{threadState?.content}</p>
 				</div>
@@ -96,7 +96,9 @@ function PostCard () {
 						<CustomAlert type={1} isOpen={showAlert} onClose={() => setShowAlert(false)}/>
 						<button id="postCardBan" className="postCardActionButton" type="button"/>
 					</div>
-					<button className={compoundClassName}  type="button" onClick={handleShowAlert}/>
+					<button className={compoundClassName}  type="button" onClick={() => {
+						!postExpired && handleShowAlert()
+					}}/>
 				</div>
 			</div>
 		</div>
