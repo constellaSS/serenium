@@ -63,12 +63,7 @@ function PostWithReplies() {
 	return (
 		<>
 			<div className={"post-replies-container"}>
-				<PostCard
-					title={threadState?.title || ''}
-					content={threadState?.content || ''}
-					type={threadState?.threadType === 'Challenge' ? 0 : 1}
-					threadState={threadState}
-				/>
+				<PostCard/>
 				<div className={"replies-container"}>
 					{threadState?.replies.map(replyHM => (
 						<ReplyPhoto title={"Lorem ipsum"}/>
