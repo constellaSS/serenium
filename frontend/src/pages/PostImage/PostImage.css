@@ -1,0 +1,80 @@
+.postCardTitle{
+    font-family: 'Japandi',sans-serif;
+    color: #000000;
+    font-size: 5.5vw;
+    margin-bottom: 0vw;
+}
+
+
+.post-feed-page {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    background-color: transparent;
+    background-image: url("../../assets/images/pizza_example.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.contentWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    gap: 0;
+    background-image: url("../../assets/images/icons/NavImage.svg");
+    background-size: 100% 180%;
+    background-repeat: no-repeat;
+}
+
+
+.Text{
+    display: flex;
+    align-items: flex-end;
+    padding-left: 5vw;
+}
+
+
+.postCardButtonOutsideContainer{
+    width: 100%;
+    height: 22%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 5vw;
+}
+
+.postCardButtonInerContainer{
+    width: 55%;
+    height: 55%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3vw;
+}
+
+#postCardSave{
+    background-image: url("../../assets/images/icons/postCardSave.svg")
+}
+#postCardShare{
+    background-image: url("../../assets/images/icons/postCardShare.svg")
+}
+#postCardBan{
+    background-image: url("../../assets/images/icons/postCardBan.svg")
+}
+#cardPostAddButton{
+    background-image: url("../../assets/images/icons/AddPostBtn_White.svg");
+    width: 6.8vh;
+    height: 6.8vh;
+    border: none;
+    background-color: transparent;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 10vw;
+}
