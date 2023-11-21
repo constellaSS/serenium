@@ -2,7 +2,7 @@
     position: fixed;
     top:0;
     display: flex;
-    width: 100%;
+    width: 100vw;
     height: 8.5vh;
     flex-direction: row;
     gap: 5vw;
@@ -81,4 +81,14 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+.full-screen-header-style {
+    background-color: transparent;
+    background-image: url("./../../../assets/images/icons/full-screen-header-bg.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 180%;
+    height: 8vh;
+    width: 100vw;
 }

@@ -1,6 +1,7 @@
 import { Account } from './account';
 import "./Header.css"
 import {useLocation} from "react-router-dom";
+import * as url from "url";
 
 type Props = {
     isAccountVisible: boolean;
@@ -8,8 +9,11 @@ type Props = {
 
 function Header({ isAccountVisible }: Props) {
   const location = useLocation();
+  let headerStyle: any = '';
 
   const renderHeader = () => {
+    const headerStyle = '';
+
     if (location.pathname !== '/') {
       return(
         <>
@@ -27,8 +31,14 @@ function Header({ isAccountVisible }: Props) {
     }
   }
 
+    if (location.pathname === '/full-screen-post') {
+      headerStyle = 'full-screen-header-style'
+    }
+
+  const headerContainerClass = `headerContainer ${headerStyle}`
+
     return (
-        <header className='headerContainer'>
+        <header className={headerContainerClass}>
           {renderHeader()}
           <button className="dropdownButtonMenu" type="button"> </button>
         </header>

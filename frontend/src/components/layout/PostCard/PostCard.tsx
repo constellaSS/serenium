@@ -80,7 +80,7 @@ function PostCard () {
 			)}
 			<div className={"post-card-body"}>
 				<div className={"post-card-info"} onClick={() => {
-					window.location.href = '/full-post'
+					window.location.href = '/post'
 				}}>
 					<h2 className="postCardTitle">{threadState?.title}</h2>
 					<p className="postCardContent">{threadState?.content}</p>
