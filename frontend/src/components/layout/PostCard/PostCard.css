@@ -105,10 +105,6 @@
     gap: 2vw;
 }
 
-/*.post-card-info {*/
-/*    padding: 3%;*/
-/*}*/
-
 #postCardLike{
     background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/postCardLike.svg")
 }
