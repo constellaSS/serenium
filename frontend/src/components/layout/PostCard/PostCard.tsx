@@ -3,7 +3,6 @@ import CardHeaderQuestion from "./CardHeaderQuestion";
 import CardHeaderChallenge from "./CardHeaderChallenge";
 import {ProgramMetadata} from "@gear-js/api";
 import {useEffect, useState} from "react";
-import CustomAlert from "../CustomAlert/CustomAlert";
 import Tag from "../Tag/Tag";
 import Reply from "../Reply/Reply";
 import {useAlert, useApi} from "@gear-js/react-hooks";
@@ -93,7 +92,6 @@ function PostCard () {
 					<div className="postCardButtonInerContainer">
 						<button id="postCardSave" className="postCardActionButton" type="button"/>
 						<button id="postCardShare" className="postCardActionButton" type="button"/>
-						<CustomAlert type={1} isOpen={showAlert} onClose={() => setShowAlert(false)}/>
 						<button id="postCardBan" className="postCardActionButton" type="button"/>
 					</div>
 					<button className={compoundClassName}  type="button" onClick={() => {
