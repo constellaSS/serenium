@@ -1,7 +1,19 @@
 import NavBar from "../../components/layout/NavBar/NavBar";
 import './NewPost.css'
+import {useState} from "react";
 
 const NewPost = () => {
+	const [selectedImg, setSelectedImg] = useState<File | null>(null);
+
+	const handleImgChange = (e: any) => {
+		const imgFile = e.target.files[0];
+		if (imgFile && imgFile.type.startsWith('image/')) {
+			setSelectedImg(imgFile);
+		} else {
+			setSelectedImg(null);
+		}
+	}
+
 	return (
 		<>
 			<div className={"new-post-container"}>
@@ -13,10 +25,11 @@ const NewPost = () => {
 					</div>
 					<div id={"lower-section"}>
 						<div className={"photo-input-container"}>
-							<input type={"file"} id={"photo-input"} name={"image"}/>
+							<input type={"file"} id={"photo-input"} name={"image"} onChange={handleImgChange}/>
 							<label htmlFor={"photo-input"} className={"photo-label"}>
 								<div id={"photo-upload-icon"}></div>
 							</label>
+							{selectedImg && <p>{selectedImg.name}</p>}
 						</div>
 						<button id={"publish-post-btn"} type={"submit"}>
 							<p className={"publish-post-btn-text"}>Publish</p>
