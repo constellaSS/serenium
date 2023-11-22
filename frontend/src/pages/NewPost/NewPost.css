@@ -1,0 +1,40 @@
+.new-post-container {
+    font-family: 'Japandi', sans-serif;
+    color: #ffffff;
+    padding-top: 15vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+}
+
+.new-post-input {
+    background-color: transparent;
+    border: none;
+    caret-color: #ffffff;
+    color: #ffffff;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+#add-tags-btn {
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    width: fit-content;
+}
+
+#post-title {
+    font-size: 2rem;
+}
+
+#upper-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
