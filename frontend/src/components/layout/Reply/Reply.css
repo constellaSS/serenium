@@ -62,7 +62,7 @@
     height: 8vh;
     border: none;
     background-color: transparent;
-    background-image: url("../../../../../../serenium/frontend/src/assets/images/icons/reply_text_question.svg");
+    background-image: url("./icons/reply_text_question.svg");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;

@@ -20,14 +20,14 @@
 }
 
 #navBtn1{
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/navBtn1.svg");
+    background-image: url("./icons/navBtn1.svg");
 }
 #navBtn2{
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/navBtn2.svg");
+    background-image: url("./icons/navBtn2.svg");
 }#navBtn3{
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/navBtn3.svg");
+    background-image: url("./icons/navBtn3.svg");
 }#navBtn4{
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/navBtn4.svg");
+    background-image: url("./icons/navBtn4.svg");
 }#navBtn5{
-    background-image: urL("../../../../../../serenium/frontend/src/assets/images/icons/navBtn5.svg");
+    background-image: url("./icons/navBtn5.svg");
 }
