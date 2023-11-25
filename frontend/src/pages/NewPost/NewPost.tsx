@@ -5,6 +5,8 @@ import {ProgramMetadata} from "@gear-js/api";
 import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
 import {web3FromSource} from "@polkadot/extension-dapp";
 import {THREAD_PROGRAM_ID, THREAD_PROGRAM_METADATA} from "../../ContractVariables";
+import {BlobServiceClient} from "@azure/storage-blob";
+import {AZURE} from "../../consts";
 
 const NewPost = () => {
 	const alert = useAlert();
@@ -31,6 +33,29 @@ const NewPost = () => {
 		gasLimit: 2099819245,
 		value: 0,
 	};
+
+	const uploadPic = async () => {
+		let storageAccountName = 'postpictures';
+		let sasToken = AZURE.BLOB_STORAGE_SAS;
+		console.log(sasToken);
+		const blobService = new BlobServiceClient(
+			`https://${storageAccountName}.blob.core.windows.net/?${sasToken}`
+		)
+
+		const containerClient = blobService.getContainerClient('postpictures');
+		await containerClient.createIfNotExists({
+			access: 'container'
+		})
+		const blobClient = containerClient.getBlockBlobClient(selectedImg?.name as string);
+
+		const options = {
+			blobHTTPHeaders: {
+				blobContentType: selectedImg?.type
+			}
+		}
+
+		await blobClient.uploadBrowserData(selectedImg as File, options);
+	}
 
 	const signer = async () => {
 		const localaccount = account?.address;
@@ -97,7 +122,10 @@ const NewPost = () => {
 							</label>
 							{selectedImg && <p>{selectedImg.name}</p>}
 						</div>
-						<button id={"publish-post-btn"} onClick={signer}>
+						<button id={"publish-post-btn"} onClick={async () => {
+							await signer();
+							await uploadPic();
+						}}>
 							<p className={"publish-post-btn-text"}>Publish</p>
 							<div className={"add-post-svg"}></div>
 						</button>
