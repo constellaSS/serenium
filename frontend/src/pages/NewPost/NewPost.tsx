@@ -1,25 +1,25 @@
 import NavBar from "../../components/layout/NavBar/NavBar";
 import './NewPost.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {ProgramMetadata} from "@gear-js/api";
 import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
 import {web3FromSource} from "@polkadot/extension-dapp";
-import {THREAD_PROGRAM_ID, THREAD_PROGRAM_METADATA} from "../../ContractVariables";
 import {BlobServiceClient} from "@azure/storage-blob";
-import {AZURE} from "../../consts";
+import {AZURE, PROGRAMS} from "../../consts";
 
 const NewPost = () => {
 	const alert = useAlert();
 	const [selectedImg, setSelectedImg] = useState<File | null>(null);
 	const [Title, setTitle] = useState('');
 	const [Content, setContent] = useState('');
+	const [photoUrl, setPhotoUrl] = useState('');
 	const { accounts, account } = useAccount();
 	const { api } = useApi();
 
-	const metadata = ProgramMetadata.from(THREAD_PROGRAM_METADATA);
+	const metadata = ProgramMetadata.from(PROGRAMS.THREAD.META);
 
 	const message: any = {
-		destination: THREAD_PROGRAM_ID,
+		destination: PROGRAMS.THREAD.ID,
 		payload: {
 			NewThread: {
 				// TODO: handle id generation
@@ -28,6 +28,7 @@ const NewPost = () => {
 				threadType: "Question",
 				title: Title,
 				content: Content,
+				photoUrl: photoUrl
 			},
 		},
 		gasLimit: 2099819245,
@@ -37,7 +38,6 @@ const NewPost = () => {
 	const uploadPic = async () => {
 		let storageAccountName = 'postpictures';
 		let sasToken = AZURE.BLOB_STORAGE_SAS;
-		console.log(sasToken);
 		const blobService = new BlobServiceClient(
 			`https://${storageAccountName}.blob.core.windows.net/?${sasToken}`
 		)
@@ -54,7 +54,8 @@ const NewPost = () => {
 			}
 		}
 
-		await blobClient.uploadBrowserData(selectedImg as File, options);
+		await blobClient.uploadData(selectedImg as File, options);
+		setPhotoUrl(blobClient.url);
 	}
 
 	const signer = async () => {
@@ -101,6 +102,15 @@ const NewPost = () => {
 		}
 	}
 
+	useEffect(() => {
+		const handlePhotoUrlChange = async () => {
+			if (photoUrl !== "") {
+				await signer();
+			}
+		};
+		handlePhotoUrlChange();
+	}, [photoUrl]);
+
 	return (
 		<>
 			<div className={"new-post-container"}>
@@ -123,7 +133,6 @@ const NewPost = () => {
 							{selectedImg && <p>{selectedImg.name}</p>}
 						</div>
 						<button id={"publish-post-btn"} onClick={async () => {
-							await signer();
 							await uploadPic();
 						}}>
 							<p className={"publish-post-btn-text"}>Publish</p>

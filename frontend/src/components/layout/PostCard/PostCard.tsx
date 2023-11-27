@@ -6,14 +6,7 @@ import {useEffect, useState} from "react";
 import Tag from "../Tag/Tag";
 import Reply from "../Reply/Reply";
 import {useAlert, useApi} from "@gear-js/react-hooks";
-import {THREAD_PROGRAM_ID, THREAD_PROGRAM_METADATA} from "../../../ContractVariables";
-
-interface PostCardProps {
-	title: string;
-	content: string;
-	type: number;
-	threadState?: ThreadState | undefined
-}
+import {PROGRAMS} from "../../../consts";
 
 type ThreadState = {
 	id: string;
@@ -41,11 +34,11 @@ function PostCard () {
 	const alert = useAlert();
 	const [postExpired, setPostExpired] = useState(true);
 
-	const metadata = ProgramMetadata.from(THREAD_PROGRAM_METADATA);
+	const metadata = ProgramMetadata.from(PROGRAMS.THREAD.META);
 
 	const getState = () => {
 		api.programState
-			.read({ programId: THREAD_PROGRAM_ID, payload: '' }, metadata)
+			.read({ programId: PROGRAMS.THREAD.ID, payload: '' }, metadata)
 			.then(result => {
 				setThreadState(result.toJSON() as unknown as ThreadState);
 				alert.success('Successful state');

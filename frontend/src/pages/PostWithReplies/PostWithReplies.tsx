@@ -6,7 +6,7 @@ import Reply from '../../components/layout/Reply/Reply'
 import NavBar from "../../components/layout/NavBar/NavBar";
 import './PostWithReplies.css'
 import ReplyPhoto from "../../components/layout/Reply/ReplyPhoto/ReplyPhoto";
-import {THREAD_PROGRAM_ID, THREAD_PROGRAM_METADATA} from "../../ContractVariables";
+import {PROGRAMS} from "../../consts";
 
 type ThreadState = {
 	id: string;
@@ -41,11 +41,11 @@ function PostWithReplies() {
 		numberOfReports: number
 	}
 
-	const metadata = ProgramMetadata.from(THREAD_PROGRAM_METADATA);
+	const metadata = ProgramMetadata.from(PROGRAMS.THREAD.META);
 
 	const getState = () => {
 		api.programState
-			.read({ programId: THREAD_PROGRAM_ID, payload: '' }, metadata)
+			.read({ programId: `0x${PROGRAMS.THREAD.ID}`, payload: '' }, metadata)
 			.then(result => {
 				setThreadState(result.toJSON() as unknown as ThreadState);
 				alert.success('Successful state');
