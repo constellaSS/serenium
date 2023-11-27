@@ -91,7 +91,15 @@ const NewPost = () => {
 		} else {
 			alert.error("Account not available to sign");
 		}
+		resetInputs();
 	};
+
+	const resetInputs = () => {
+		setTitle('');
+		setContent('');
+		setSelectedImg(null);
+		setPhotoUrl('');
+	}
 
 	const handleImgChange = (e: any) => {
 		const imgFile = e.target.files[0];
@@ -116,11 +124,11 @@ const NewPost = () => {
 			<div className={"new-post-container"}>
 				<div className={"form-container"}>
 					<div id={"upper-section"}>
-						<input className={"new-post-input"} id={"post-title"} type={"text"} name={"post-title"} placeholder={"Title"} required={true} onChange={(e) => {
+						<input className={"new-post-input"} id={"post-title"} type={"text"} name={"post-title"} placeholder={"Title"} value={Title} required={true} onChange={(e) => {
 							setTitle(e.target.value)
 						}}/>
 						<button id={"add-tags-btn"}>Add Tags</button>
-						<textarea name={"content"} placeholder={"Content (optional)"} id={"content-input"} className={"new-post-input"} onChange={(e) => {
+						<textarea name={"content"} placeholder={"Content (optional)"} id={"content-input"} className={"new-post-input"} value={Content} onChange={(e) => {
 							setContent(e.target.value)
 						}}/>
 					</div>
