@@ -7,6 +7,7 @@ import Tag from "../Tag/Tag";
 import Reply from "../Reply/Reply";
 import {useAlert, useApi} from "@gear-js/react-hooks";
 import {PROGRAMS} from "../../../consts";
+import CardHeaderImage from "./CardHeaderImage/CardHeaderImage";
 
 type ThreadState = {
 	id: string;
@@ -14,6 +15,7 @@ type ThreadState = {
 	threadType: string;
 	title: string;
 	content: string;
+	photoUrl: string;
 	replies: [string, Reply][];
 	participants: [];
 	state: string;
@@ -30,7 +32,7 @@ type Reply = {
 
 function PostCard () {
 	const {api} = useApi();
-	const [threadState, setThreadState] = useState<ThreadState>();
+	const [threadState, setThreadState] = useState<ThreadState | undefined>(undefined);
 	const alert = useAlert();
 	const [postExpired, setPostExpired] = useState(true);
 
@@ -55,11 +57,7 @@ function PostCard () {
 
 	return (
 		<div className="postCard">
-			{threadState?.threadType ? (
-				<CardHeaderQuestion/>
-			) : (
-				<CardHeaderChallenge/>
-			)}
+			<CardHeaderImage imgUrl={threadState?.photoUrl as string}/>
 			<div className={"post-card-body"}>
 				<div className={"post-card-info"} onClick={() => {
 					window.location.href = '/post'
