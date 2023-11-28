@@ -114,7 +114,19 @@ async fn main() {
             // Immediately push thread id to graph
             new_thread.graph_rep.insert(new_thread.id.clone(), Vec::new());
 
-            new_thread.tokens_transfer_pay(1).await;
+            // send delayed message to expire thread
+            let payload = ThreadAction::EndThread;
+            let _ = msg::send_delayed(exec::program_id(), payload, 0, 5).expect("Delayed expiration msg was not successfully sent");
+
+            // transfer a token
+            // new_thread.tokens_transfer_pay(1).await;
+        }
+
+        ThreadAction::EndThread => {
+            let thread = thread_state_mut();
+            thread.state = ThreadState::Expired;
+            // let &winner = thread.find_winner().expect("Winner not found");
+            // thread.tokens_transfer_reward(1, winner).await;
         }
 
         ThreadAction::AddReply(content, reply_id, post_id) => {
@@ -137,13 +149,6 @@ async fn main() {
         ThreadAction::LikeReply(amount) => {
             let thread = thread_state_mut();
             thread.participants.entry(msg::source()).or_insert(amount);
-        }
-
-        ThreadAction::EndThread => {
-            let thread = thread_state_mut();
-            thread.state = ThreadState::Expired;
-            let &winner = thread.find_winner().expect("Winner not found");
-            thread.tokens_transfer_reward(1, winner).await;
         }
     };
 }
