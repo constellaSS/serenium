@@ -6,10 +6,12 @@ import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
 import {web3FromSource} from "@polkadot/extension-dapp";
 import {BlobServiceClient} from "@azure/storage-blob";
 import {AZURE, PROGRAMS} from "../../consts";
+import TypeDropdown from "./TypeDropdown/TypeDropdown";
 
 const NewPost = () => {
 	const alert = useAlert();
 	const [selectedImg, setSelectedImg] = useState<File | null>(null);
+	const [ThreadType, setThreadType] = useState('');
 	const [Title, setTitle] = useState('');
 	const [Content, setContent] = useState('');
 	const [photoUrl, setPhotoUrl] = useState('');
@@ -24,8 +26,7 @@ const NewPost = () => {
 			NewThread: {
 				// TODO: handle id generation
 				id: "2",
-				// TODO: Change for actual state variable of post type
-				threadType: "Question",
+				threadType: ThreadType,
 				title: Title,
 				content: Content,
 				photoUrl: photoUrl
@@ -124,6 +125,7 @@ const NewPost = () => {
 			<div className={"new-post-container"}>
 				<div className={"form-container"}>
 					<div id={"upper-section"}>
+						<TypeDropdown threadType={ThreadType} setThreadType={setThreadType}/>
 						<input className={"new-post-input"} id={"post-title"} type={"text"} name={"post-title"} placeholder={"Title"} value={Title} required={true} onChange={(e) => {
 							setTitle(e.target.value)
 						}}/>
