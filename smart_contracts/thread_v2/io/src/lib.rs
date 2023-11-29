@@ -58,7 +58,7 @@ pub enum ThreadAction {
     NewThread(InitThread),
     EndThread,
     AddReply(String, String, String),
-    LikeReply(u128)
+    LikeReply(u128, String)
 }
 
 #[derive(Encode, Decode, TypeInfo, PartialEq, Eq, Clone, Debug)]

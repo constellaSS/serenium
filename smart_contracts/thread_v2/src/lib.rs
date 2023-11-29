@@ -120,6 +120,15 @@ impl Thread {
         path_winners
     }
 
+    fn find_reply_by_id(&mut self, target_reply_id: String) -> Option<&mut ThreadReply> {
+        let replies = &mut self.replies;
+        for (_, reply) in replies {
+            if reply.post_id == target_reply_id {
+                return Some(reply);
+            }
+        }
+        None
+    }
 }
 
 static mut THREAD: Option<Thread> = None;
@@ -223,9 +232,11 @@ async fn main() {
             }
         }
 
-        ThreadAction::LikeReply(amount) => {
+        ThreadAction::LikeReply(amount, reply_id) => {
             let thread = thread_state_mut();
             thread.participants.entry(msg::source()).or_insert(amount);
+            let reply = thread.find_reply_by_id(reply_id).expect("Reply_id not get");
+            reply.number_of_likes += 1;
         }
     };
 }
