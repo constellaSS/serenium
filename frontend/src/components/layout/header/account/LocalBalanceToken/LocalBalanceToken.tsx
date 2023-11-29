@@ -1,17 +1,13 @@
 import { encodeAddress, ProgramMetadata } from "@gear-js/api";
 import { useEffect, useState } from "react";
 import { useApi, useAlert, useAccount } from "@gear-js/react-hooks";
+import './LocalBalanceToken.css'
 
 function LocalBalanceToken() {
   const { api } = useApi();
   const { account } = useAccount();
-
-  const alert = useAlert();
-
   const [balance, setBalance] = useState<any | undefined>(0);
-
   const [fullState, setFullState] = useState<any | undefined>({});
-
   const Localbalances = fullState.balances || [];
 
  // Add your programID
@@ -25,12 +21,12 @@ const meta =
  const metadata = ProgramMetadata.from(meta);
 
   const getBalance = () => {
-    api.programState
+    api?.programState
       .read({ programId: programIDFT,payload:"" }, metadata)
       .then((result) => {
         setFullState(result.toJSON());
       })
-      .catch(({ message }: Error) => alert.error(message));
+      .catch(({ message }: Error) => console.error(message));
 
     Localbalances.some(([address, balances]: any) => {
       if (encodeAddress(address) === account?.address) {
@@ -46,8 +42,9 @@ const meta =
   });
 
   return (
-    <div>
-      <h1>{balance} SIKES</h1>
+    <div className={"balance-container"}>
+      <p className={"balance-text"}>{balance}</p>
+      <div className={"coin-icon"}></div>
     </div>
   );
 }

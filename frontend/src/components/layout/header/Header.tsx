@@ -2,6 +2,7 @@ import { Account } from './account';
 import "./Header.css"
 import {useLocation} from "react-router-dom";
 import * as url from "url";
+import {LocalBalanceToken} from "./account/LocalBalanceToken/LocalBalanceToken";
 
 type Props = {
     isAccountVisible: boolean;
@@ -23,10 +24,10 @@ function Header({ isAccountVisible }: Props) {
       )
     } else {
       return (
-        <>
-          {isAccountVisible && <Account />}
-          <div className="logoTextSerenium" />
-        </>
+        <div id={"header-left-container"}>
+          <div className={"logo-serenium"}/>
+          <div className="logoTextSerenium"/>
+        </div>
       )
     }
   }
@@ -40,7 +41,7 @@ function Header({ isAccountVisible }: Props) {
     return (
         <header className={headerContainerClass}>
           {renderHeader()}
-          <button className="dropdownButtonMenu" type="button"> </button>
+          <LocalBalanceToken/>
         </header>
     );
 }
