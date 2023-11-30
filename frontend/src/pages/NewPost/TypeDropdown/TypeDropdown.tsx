@@ -18,7 +18,7 @@ const TypeDropdown = ({threadType, setThreadType}: TypeSectionProps) => {
 				<input type={"radio"} name={"type-selection"} id={"challenge-input"} value={"Challenge"} className={"type-radio"} required onChange={(e) => {
 					handleSelection(e.target.value);
 				}}/>
-				<label htmlFor={"challenge-input"} className={"type-post-label"}>
+				<label htmlFor={"challenge-input"}  className={"type-post-label"}>
 					Challenge
 				</label>
 			</div>

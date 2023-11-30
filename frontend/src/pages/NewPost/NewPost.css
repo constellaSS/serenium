@@ -3,9 +3,17 @@
     font-family: 'Japandi', sans-serif;
     color: #ffffff;
     padding: 15vh 5vw 2.5vh;
-    background-color: black;
+    background-color: #121212;
+    background-image: url("./newPostChallengeBG.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 7.4vh;
     width: 100vw;
-    height: 92.5vh;
+ /*   top:8.5vh;*/
+   /* height: 92.5vh;*/
+    height: 84.1vh;
     overflow: hidden;
 }
 
@@ -32,12 +40,19 @@
 }
 
 #post-title {
-    font-size: 2rem;
+    font-size: 8vw;
+    width: 85vw;
+    border: none;
+
+    outline: none;
+}
+#post-title::selection{
+    border: none;
 }
 
 #content-input {
     min-height: fit-content;
-    height: 50vh;
+    height: 50vh;    outline: none;
 }
 
 #upper-section {
@@ -45,7 +60,11 @@
     flex-direction: column;
     gap: 1vh;
 }
-
+.new-post-upper-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 #lower-section {
     display: flex;
     justify-content: space-between;

@@ -23,6 +23,7 @@
     min-height: fit-content;
     width: 90vw;
     background-color: #1E1E1E;
+
     border-radius: 8px;
     display: flex;
     flex-direction: column;
