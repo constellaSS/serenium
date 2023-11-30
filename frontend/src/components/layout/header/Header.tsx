@@ -4,11 +4,7 @@ import {useLocation} from "react-router-dom";
 import * as url from "url";
 import {LocalBalanceToken} from "./account/LocalBalanceToken/LocalBalanceToken";
 
-type Props = {
-    isAccountVisible: boolean;
-};
-
-function Header({ isAccountVisible }: Props) {
+function Header() {
   const location = useLocation();
   let headerStyle: any = '';
 

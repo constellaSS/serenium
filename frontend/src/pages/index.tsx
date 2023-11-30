@@ -4,6 +4,7 @@ import { Main } from './main';
 import PostWithReplies from "./PostWithReplies/PostWithReplies";
 import PostImage from "./PostImage/PostImage";
 import NewPost from "./NewPost/NewPost";
+import {ApiLoader} from "../components";
 
 const routes = [{ path: '/', Page: Home },{ path: '/post', Page: PostWithReplies }, { path: '/full-screen-post', Page: PostImage }, { path: '/new-post', Page: NewPost}];
 

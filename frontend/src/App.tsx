@@ -12,7 +12,7 @@ function Component() {
 
   return (
     <>
-      <Header isAccountVisible={isAccountReady} />
+      {isAppReady && <Header/>}
       <main>{isAppReady ? <Routing /> : <ApiLoader />}</main>
     </>
   );

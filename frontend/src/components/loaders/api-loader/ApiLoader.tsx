@@ -1,7 +1,16 @@
-import styles from './ApiLoader.module.scss';
+import styles from './ApiLoader.module.css';
+import CustomLoader from "./CustomLoader/CustomLoader";
 
 function ApiLoader() {
-  return <p className={styles.loader}>Initializing API</p>;
+  return(
+    <div className={styles.loadingScreenContainer}>
+      <div className={styles.logoLoading}/>
+      <p className={styles.loadingText}>Loading</p>
+      <div className={styles.loaderContainer}>
+        <CustomLoader/>
+      </div>
+    </div>
+  )
 }
 
 export { ApiLoader };
