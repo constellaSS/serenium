@@ -9,12 +9,13 @@ import {AZURE, PROGRAMS} from "../../consts";
 import TypeDropdown from "./TypeDropdown/TypeDropdown";
 import {generateRandomId} from "../../utils/random_id";
 import {u64} from "@polkadot/types";
+import {useParams} from "react-router-dom";
 
 interface NewPostProps {
 	isReply: boolean
 }
 
-const NewPost = ({isReply}: NewPostProps) => {
+const NewPost = ({ isReply }: NewPostProps) => {
 	const alert = useAlert();
 	const [selectedImg, setSelectedImg] = useState<File | null>(null);
 	const [ThreadType, setThreadType] = useState('');
@@ -23,6 +24,7 @@ const NewPost = ({isReply}: NewPostProps) => {
 	const [photoUrl, setPhotoUrl] = useState('');
 	const { accounts, account } = useAccount();
 	const { api } = useApi();
+	const { postId } = useParams();
 
 	const newThreadPayload = {
 		NewThread: {
@@ -35,12 +37,12 @@ const NewPost = ({isReply}: NewPostProps) => {
 	}
 
 	const replyPayload = {
-		AddReply: {
-			id: generateRandomId(true),
-			title: Title,
-			content: Content,
-			photoUrl: photoUrl
-		}
+		AddReply: [
+			Title,
+			Content,
+			generateRandomId(true),
+			(postId as string).slice(1)
+		]
 	}
 
 	const metadata = ProgramMetadata.from(PROGRAMS.THREAD.META);
@@ -60,7 +62,6 @@ const NewPost = ({isReply}: NewPostProps) => {
 		const blobService = new BlobServiceClient(
 			`https://${storageAccountName}.blob.core.windows.net/?${sasToken}`
 		)
-
 
 		const containerClient = blobService.getContainerClient('postpictures');
 		await containerClient.createIfNotExists({
@@ -149,7 +150,6 @@ const NewPost = ({isReply}: NewPostProps) => {
 						<input className={"new-post-input"} id={"post-title"} type={"text"} name={"post-title"} placeholder={"Title"} value={Title} required={true} onChange={(e) => {
 							setTitle(e.target.value)
 						}}/>
-						<button id={"add-tags-btn"}>Add Tags</button>
 						<textarea name={"content"} placeholder={"Content (optional)"} id={"content-input"} className={"new-post-input"} value={Content} onChange={(e) => {
 							setContent(e.target.value)
 						}}/>

@@ -57,7 +57,7 @@ function PostCard () {
 
 	return (
 		<div className="postCard">
-			<CardHeaderImage imgUrl={threadState?.photoUrl as string}/>
+			{threadState?.photoUrl !== "" && <CardHeaderImage imgUrl={threadState?.photoUrl as string}/>}
 			<div className={"post-card-body"}>
 				<div className={"post-card-info"} onClick={() => {
 					window.location.href = '/post'
@@ -65,13 +65,9 @@ function PostCard () {
 					<h2 className="postCardTitle">{threadState?.title}</h2>
 					<p className="postCardContent">{threadState?.content}</p>
 				</div>
-				<div className={"tags-container"}>
-					<Tag name={"lorem"}/>
-					<Tag name={"ipsum"}/>
-				</div>
 				<div className="postCardButtonOutsideContainer">
 					<button className={compoundClassName}  type="button" onClick={() => {
-						window.location.href = '/new-reply'
+						window.location.href = `/new-reply/:${threadState?.id}`
 					}}/>
 				</div>
 			</div>
