@@ -5,9 +5,10 @@
     flex-direction: column;
     background-color: #1E1E1E;
     gap: 2vh;
-    height: 100vh;
+    height: 135%;
     padding-top: 10vh;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .replies-container{}

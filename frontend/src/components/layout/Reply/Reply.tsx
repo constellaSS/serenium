@@ -2,6 +2,7 @@ import './Reply.css'
 import {ProgramMetadata} from "@gear-js/api";
 import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
 import {web3FromSource} from "@polkadot/extension-dapp";
+import {PROGRAMS} from "../../../consts";
 import {useState} from "react";
 
 interface Props {
@@ -69,14 +70,10 @@ function Reply ({owner, content}: Props) {
 		}
 	};
 
-	const handleShowAlert = () => {
-		setShowAlert(true);
-	};
-
 	return (
 		<div className="replyCard">
-			<h2 className="replyTitle">Lorem Ipsum</h2>
-			<p className={"replyContent"}>Simple – it's my joystick for the mind! ☕The caffeine kick keeps me alert, the warmth of the cup is like a hug during intense moments.</p>
+			<h2 className="replyTitle">{title}</h2>
+			<p className={"replyContent"}>{content}</p>
 			<div className={"replyIconContainer"}>
 				<div className={"replyIcon"}></div>
 			</div>

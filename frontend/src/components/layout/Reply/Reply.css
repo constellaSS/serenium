@@ -33,11 +33,45 @@
     max-height: 15vh;
     background-color: #282828;
     border-radius: 8px;
-    display: grid;
+    /*display: grid;
     grid-template-columns: 4fr 1fr;
-    grid-template-rows: 25% 75%;
+    grid-template-rows: 25% 75%;*/
+
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
     padding: 3%;
+    display: flex;
+
+}
+.contet-reply-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1vh;
+}
+
+.expanded{
+    min-height: 50vh;
+}
+.reply-card-like-button{
+    width: 10vh;
+    height: 2vh;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image: url("./icons/like.svg");
+    background-size: contain;
+    border: none;
+}
+
+.button-reply-container{
+/*    background-color: #0fff23;*/
+    width: 5vh;
+    height: 8vh;
+    display: flex;
+    flex-direction: column;
+
+
 }
 
 .replyTitle {
