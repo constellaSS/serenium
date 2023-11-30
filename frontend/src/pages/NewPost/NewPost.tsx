@@ -1,14 +1,13 @@
 import NavBar from "../../components/layout/NavBar/NavBar";
 import './NewPost.css'
 import {useEffect, useState} from "react";
-import {HexString, ProgramMetadata} from "@gear-js/api";
+import {ProgramMetadata} from "@gear-js/api";
 import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
 import {web3FromSource} from "@polkadot/extension-dapp";
 import {BlobServiceClient} from "@azure/storage-blob";
 import {AZURE, PROGRAMS} from "../../consts";
 import TypeDropdown from "./TypeDropdown/TypeDropdown";
 import {generateRandomId} from "../../utils/random_id";
-import {u64} from "@polkadot/types";
 import {useParams} from "react-router-dom";
 
 interface NewPostProps {
@@ -26,28 +25,30 @@ const NewPost = ({ isReply }: NewPostProps) => {
 	const { api } = useApi();
 	const { postId } = useParams();
 
-	const newThreadPayload = {
-		NewThread: {
-			id: generateRandomId(false),
-			threadType: ThreadType,
-			title: Title,
-			content: Content,
-			photoUrl: photoUrl
+	let payload;
+
+	if (isReply) {
+		payload = {
+			AddReply: [
+				Title,
+				Content,
+				generateRandomId(true),
+				(postId as string).slice(1)
+			]
+		}
+	} else {
+		payload = {
+			NewThread: {
+				id: generateRandomId(false),
+				threadType: ThreadType,
+				title: Title,
+				content: Content,
+				photoUrl: photoUrl
+			}
 		}
 	}
 
-	const replyPayload = {
-		AddReply: [
-			Title,
-			Content,
-			generateRandomId(true),
-			(postId as string).slice(1)
-		]
-	}
-
 	const metadata = ProgramMetadata.from(PROGRAMS.THREAD.META);
-
-	let payload = isReply ? replyPayload : newThreadPayload;
 
 	const message: any = {
 		destination: PROGRAMS.THREAD.ID,
