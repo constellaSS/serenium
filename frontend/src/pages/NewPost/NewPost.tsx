@@ -22,20 +22,31 @@ const NewPost = ({isReply}: NewPostProps) => {
 	const { accounts, account } = useAccount();
 	const { api } = useApi();
 
+	const newThreadPayload = {
+		NewThread: {
+			// TODO: handle id generation
+			id: "2",
+			threadType: ThreadType,
+			title: Title,
+			content: Content,
+			photoUrl: photoUrl
+		}
+	}
+
+	const replyPayload = {
+		AddReply: {
+			id: "2",
+			title: Title,
+			content: Content,
+			photoUrl: photoUrl
+		}
+	}
+
 	const metadata = ProgramMetadata.from(PROGRAMS.THREAD.META);
 
 	const message: any = {
 		destination: PROGRAMS.THREAD.ID,
-		payload: {
-			NewThread: {
-				// TODO: handle id generation
-				id: "2",
-				threadType: ThreadType,
-				title: Title,
-				content: Content,
-				photoUrl: photoUrl
-			},
-		},
+		payload: isReply ? replyPayload : newThreadPayload,
 		gasLimit: 2099819245,
 		value: 0,
 	};
