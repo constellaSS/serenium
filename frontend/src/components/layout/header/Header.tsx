@@ -10,7 +10,7 @@ function Header() {
   const renderHeader = () => {
     const headerStyle = '';
 
-    if (location.pathname !== '/') {
+    if (location.pathname !== '/home') {
       return(
         <>
           <button className={"back-btn"} onClick={() => {

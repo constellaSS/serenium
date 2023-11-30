@@ -11,7 +11,6 @@ type Props = {
 };
 
 function AccountButton({ address, name, onClick, isActive, block }: Props) {
-  
 
   return (
     <button className='boton-ovalado accountButtonPol' type="button" onClick={onClick}>

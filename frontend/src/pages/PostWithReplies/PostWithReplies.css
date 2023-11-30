@@ -3,11 +3,13 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    background-color: #1E1E1E;
+    background-color: #121212;
     gap: 2vh;
     height: 100vh;
     padding-top: 10vh;
     align-items: center;
 }
 
-.replies-container{}
+.replies-container{
+    width: 90vw;
+}

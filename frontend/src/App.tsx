@@ -3,6 +3,8 @@ import { Routing } from 'pages';
 import { Header, ApiLoader } from 'components';
 import { withProviders } from 'hocs';
 import './normalize.css';
+import NavBar from "./components/layout/NavBar/NavBar";
+import ConnectWallet from "./pages/ConnectWallet/ConnectWallet";
 
 function Component() {
   const { isApiReady } = useApi();
@@ -14,6 +16,7 @@ function Component() {
     <>
       {isAppReady && <Header/>}
       <main>{isAppReady ? <Routing /> : <ApiLoader />}</main>
+      {isAppReady && <NavBar/>}
     </>
   );
 }

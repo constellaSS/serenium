@@ -1,0 +1,46 @@
+.connect-wallet-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #121212;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.serenium-logo-wallet {
+    width: 100vw;
+    height: 50vh;
+    background-image: url("../../assets/images/icons/serenium_wallet.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.polkadot-logo-wallet {
+    width: 18vw;
+    height: 6vh;
+    background-image: url("../../assets/images/icons/polkadot-logo.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.connect-button {
+    display: flex;
+    border: 2px solid white;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 40vw;
+    background-color: transparent;
+    padding: 1% 2%;
+}
+
+.connect-text {
+    color: white;
+    font-family: 'Japandi', sans-serif;
+    font-size: 6vw;
+    margin-block: 0;
+}

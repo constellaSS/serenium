@@ -9,7 +9,9 @@ function NavBar() {
 			<button type='button' onClick={() => {
 				window.location.href = '/new-post'
 			}} id="navBtn3" className="navBarButton"/>
-			<button type='button' id="navBtn5" className="navBarButton"/>
+			<button type='button' id="navBtn5" className="navBarButton" onClick={() => {
+				window.location.href = '/profile'
+			}}/>
 		</div>
 	)
 }
