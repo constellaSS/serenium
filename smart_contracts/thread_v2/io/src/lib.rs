@@ -17,6 +17,7 @@ pub struct InitThread {
 pub struct ThreadReply {
     pub id: String,
     pub owner: ActorId,
+    pub title: String,
     pub content: String,
     pub likes: u128,
     pub reports: u128,
@@ -30,7 +31,7 @@ pub struct Thread {
     pub title: String,
     pub content: String,
     pub photo_url: String,
-    pub replies: Vec<ThreadReply>,
+    pub replies: Vec<(String, ThreadReply)>,
     pub participants:Vec<(ActorId, u128)>,
     pub thread_status: ThreadState,
     pub distributed_tokens: u128,
@@ -57,7 +58,7 @@ pub enum ThreadState {
 pub enum ThreadAction {
     NewThread(InitThread),
     EndThread,
-    AddReply(String, String, String),
+    AddReply(String, String, String, String),
     LikeReply(u128, String)
 }
 
@@ -111,7 +112,7 @@ pub struct IoThread {
     pub title: String,
     pub content: String,
     pub photo_url: String,
-    pub replies: Vec<(ActorId, ThreadReply)>,
+    pub replies: Vec<(String, ThreadReply)>,
     pub participants:Vec<(ActorId, u128)>,
     pub thread_status: ThreadState,
     pub distributed_tokens: u128,

@@ -16,7 +16,7 @@ struct Thread {
     title: String,
     content: String,
     photo_url: String,
-    replies: HashMap<ActorId, ThreadReply>,
+    replies: HashMap<String, ThreadReply>,
     participants: HashMap<ActorId, u128>,
     thread_status: ThreadState,
     distributed_tokens: u128,
@@ -24,6 +24,12 @@ struct Thread {
 }
 
 impl Thread {
+
+    async fn mint_thread_contract(&mut self, amount_tokens: u128) {
+        let address_ft = addresft_state_mut();
+        let payload = FTAction::Mint(amount_tokens);
+        let _ = msg::send(address_ft.ft_program_id, payload, 0);
+    }
 
     async fn tokens_transfer_reward(&mut self, amount_tokens: u128, dest: ActorId) {
         let address_ft = addresft_state_mut();
@@ -45,10 +51,10 @@ impl Thread {
         let mut max_likes = 0;
         let mut actor_id_with_most_likes: Option<&ActorId> = None;
 
-        for (actor_id, reply) in &current_state.replies {
+        for (_, reply) in &current_state.replies {
             if reply.likes > max_likes {
                 max_likes = reply.likes;
-                actor_id_with_most_likes = Some(actor_id);
+                actor_id_with_most_likes = Some(&reply.owner);
             }
         }
         actor_id_with_most_likes
@@ -69,9 +75,9 @@ impl Thread {
     }
 
     fn find_actor_id_by_post_id(&mut self, target_post_id: String) -> Option<&ActorId> {
-        for (actor_id, reply) in self.replies.iter() {
+        for (_, reply) in self.replies.iter() {
             if *reply.id == *target_post_id {
-                return Some(actor_id)
+                return Some(&reply.owner)
             }
         }
         None
@@ -188,6 +194,9 @@ async fn main() {
             // Immediately push thread id to graph
             new_thread.graph_rep.insert(new_thread.id.clone(), Vec::new());
 
+            // Mint one FT to the thread contract so it appears in the balance state of the FT contract
+            new_thread.mint_thread_contract(1).await;
+
             // send delayed message to expire thread
             let payload = ThreadAction::EndThread;
             let delay = 60;
@@ -217,19 +226,23 @@ async fn main() {
             }
         }
 
-        ThreadAction::AddReply(content, reply_id, post_id) => {
+        ThreadAction::AddReply(title, content, reply_id, referral_post_id) => {
             let thread = thread_state_mut();
             
-            let _reply_user = thread.replies.entry(msg::source()).or_insert(ThreadReply {
+            let _reply_user = thread.replies.entry(reply_id.clone()).or_insert(ThreadReply {
                 id: reply_id.clone(),
                 owner: msg::source(),
+                title,
                 content,
                 likes: 0,
                 reports: 0,
             });
 
+            // create a new node
+            thread.graph_rep.entry(reply_id.clone()).or_insert_with(Vec::new);
+
             // push reply to the graph representation
-            if let Some(adj_list) = thread.graph_rep.get_mut(&post_id) {
+            if let Some(adj_list) = thread.graph_rep.get_mut(&referral_post_id) {
                 adj_list.push(reply_id.clone());
             }
         }
@@ -275,7 +288,7 @@ impl From<Thread> for IoThread {
     } = value;
 
     let participants = participants.iter().map(|(k, v)| (*k, v.clone())).collect();
-    let replies = replies.iter().map(|(k, v)| (*k, v.clone())).collect();
+    let replies = replies.iter().map(|(k, v)| (k.clone(), v.clone())).collect();
     let graph_rep = graph_rep.iter().map(|(k, v)| (k.clone(), v.clone())).collect();
 
     Self {
