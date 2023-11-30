@@ -108,3 +108,12 @@
     padding: 10%;
 }
 
+.reply-card-like-button {
+    background-image: url("./icons/like.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 5vh;
+    height: 5vh ;
+}
+
