@@ -52,14 +52,14 @@
 }
 
 #id_image{
-    width: 100vw;
-    height: 100vh;
-    background-image: url('./icons/question_text_post.svg');
+    width: 20vw;
+    height: 20vh;
+    background-image: url('../../../assets/images/icons/question_text_post.svg');
     background-repeat: no-repeat;
     position: absolute;
-    top: 2vh;
-    right: 41vw;
-    transform: translate(40vw, 0);
+    top: 10vh;
+    right: 10vw;
+    transform: translate(0vw, 2vh);
 }
 
 .postCardContent{

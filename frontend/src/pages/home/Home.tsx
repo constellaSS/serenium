@@ -6,8 +6,8 @@ import Profile from "../Profile/Profile";
 function Home() {
   return (
     <div className='homeScreen'>
-      <Profile/>
-      <NavBar/>
+        <PostFeed/>
+        <NavBar/>
     </div>
   )
 }
