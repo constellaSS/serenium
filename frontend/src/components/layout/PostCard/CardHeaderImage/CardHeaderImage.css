@@ -1,3 +1,47 @@
+
+.image-first-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.image-second-container{
+    width: 90vw;
+    height: 50vh;
+    overflow: hidden;
+    position: relative;
+
+}
+
+
 #post-photo {
-    max-height: 20vh;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+
+#foreground-image{
+    width: 50vw;
+    height: 50vh;
+    background-image: url("../../../../assets/images/icons/post_curves.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 2vh;
+    right: 41vw;
+    transform: translate(40vw, 0);
+}
+
+
+#foreground-image1{
+    width: 20vw;
+    height: 20vh;
+    background-image: url("../../../../assets/images/icons/question_post.svg");
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 2vh;
+    right: 10vw;
+    transform: translate(0vw, 2vh);
 }

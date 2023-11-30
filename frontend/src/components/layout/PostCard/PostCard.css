@@ -18,6 +18,7 @@
     font-display: swap;
 }
 
+
 .post-card-body{
     min-height: fit-content;
     width: 90vw;
@@ -48,6 +49,17 @@
     font-family: 'Japandi',sans-serif;
     color: #ffffff;
     font-size: 5.5vw;
+}
+
+#id_image{
+    width: 20vw;
+    height: 20vh;
+    background-image: url('../../../assets/images/icons/question_text_post.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 10vh;
+    right: 10vw;
+    transform: translate(0vw, 2vh);
 }
 
 .postCardContent{
