@@ -9,6 +9,7 @@
     padding-top: 10vh;
     padding-bottom: 10vh;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .replies-container{
