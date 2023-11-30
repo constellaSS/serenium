@@ -5,8 +5,9 @@
     flex-direction: column;
     background-color: #121212;
     gap: 2vh;
-    height: 100vh;
+    height: fit-content;
     padding-top: 10vh;
+    padding-bottom: 10vh;
     align-items: center;
 }
 
