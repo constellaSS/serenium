@@ -14,3 +14,8 @@
     width: 100vw;
     height: 100vh;
 }
+
+.new-post-heading {
+    margin-block: 0;
+    font-size: 2rem;
+}

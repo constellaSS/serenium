@@ -1,7 +1,6 @@
 import { Account } from './account';
 import "./Header.css"
 import {useLocation} from "react-router-dom";
-import * as url from "url";
 import {LocalBalanceToken} from "./account/LocalBalanceToken/LocalBalanceToken";
 
 function Header() {
@@ -14,7 +13,9 @@ function Header() {
     if (location.pathname !== '/') {
       return(
         <>
-          <button className={"back-btn"}/>
+          <button className={"back-btn"} onClick={() => {
+            window.history.back();
+          }}/>
           <div className={"logo-serenium"}/>
         </>
       )

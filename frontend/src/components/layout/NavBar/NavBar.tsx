@@ -1,4 +1,3 @@
-import {useState} from "react";
 import './navBar.css';
 
 function NavBar() {

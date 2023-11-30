@@ -70,12 +70,9 @@ function PostCard () {
 					<Tag name={"ipsum"}/>
 				</div>
 				<div className="postCardButtonOutsideContainer">
-					<div className="postCardButtonInerContainer">
-						<button id="postCardSave" className="postCardActionButton" type="button"/>
-						<button id="postCardShare" className="postCardActionButton" type="button"/>
-						<button id="postCardBan" className="postCardActionButton" type="button"/>
-					</div>
-					<button className={compoundClassName}  type="button"/>
+					<button className={compoundClassName}  type="button" onClick={() => {
+						window.location.href = '/new-reply'
+					}}/>
 				</div>
 			</div>
 		</div>

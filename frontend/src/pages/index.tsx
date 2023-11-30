@@ -6,10 +6,10 @@ import PostImage from "./PostImage/PostImage";
 import NewPost from "./NewPost/NewPost";
 import {ApiLoader} from "../components";
 
-const routes = [{ path: '/', Page: Home },{ path: '/post', Page: PostWithReplies }, { path: '/full-screen-post', Page: PostImage }, { path: '/new-post', Page: NewPost}];
+const routes = [{ path: '/', element: <Home/> },{ path: '/post', element: <PostWithReplies/> }, { path: '/full-screen-post', element: <PostImage/> }, { path: '/new-post', element: <NewPost isReply={false}/>}, { path: '/new-reply', element: <NewPost isReply={true}/>}]
 
 function Routing() {
-  const getRoutes = () => routes.map(({ path, Page }) => <Route key={path} path={path} element={<Page />} />);
+  const getRoutes = () => routes.map(({ path, element }) => <Route key={path} path={path} element={element} />);
 
   return <Routes>{getRoutes()}</Routes>;
 }

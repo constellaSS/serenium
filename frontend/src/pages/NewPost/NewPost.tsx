@@ -8,7 +8,11 @@ import {BlobServiceClient} from "@azure/storage-blob";
 import {AZURE, PROGRAMS} from "../../consts";
 import TypeDropdown from "./TypeDropdown/TypeDropdown";
 
-const NewPost = () => {
+interface NewPostProps {
+	isReply: boolean
+}
+
+const NewPost = ({isReply}: NewPostProps) => {
 	const alert = useAlert();
 	const [selectedImg, setSelectedImg] = useState<File | null>(null);
 	const [ThreadType, setThreadType] = useState('');
@@ -125,7 +129,8 @@ const NewPost = () => {
 			<div className={"new-post-container"}>
 				<div className={"form-container"}>
 					<div id={"upper-section"}>
-						<TypeDropdown threadType={ThreadType} setThreadType={setThreadType}/>
+						<h2 className={"new-post-heading"}>New {isReply? 'Reply' : 'Post'}</h2>
+						{!isReply && <TypeDropdown threadType={ThreadType} setThreadType={setThreadType}/>}
 						<input className={"new-post-input"} id={"post-title"} type={"text"} name={"post-title"} placeholder={"Title"} value={Title} required={true} onChange={(e) => {
 							setTitle(e.target.value)
 						}}/>
