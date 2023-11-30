@@ -18,7 +18,7 @@ struct Thread {
     photo_url: String,
     replies: HashMap<ActorId, ThreadReply>,
     participants: HashMap<ActorId, u128>,
-    state: ThreadState,
+    thread_status: ThreadState,
     distributed_tokens: u128,
     graph_rep: HashMap<String, Vec<String>>
 }
@@ -27,7 +27,7 @@ impl Thread {
 
     async fn tokens_transfer_reward(&mut self, amount_tokens: u128, dest: ActorId) {
         let address_ft = addresft_state_mut();
-        let payload = FTAction::Transfer {from: exec::program_id(), to: dest,amount: amount_tokens};
+        let payload = FTAction::Transfer{from: exec::program_id(), to: dest,amount: amount_tokens};
         let _ = msg::send(address_ft.ft_program_id, payload, 0);
     }
 
@@ -46,12 +46,11 @@ impl Thread {
         let mut actor_id_with_most_likes: Option<&ActorId> = None;
 
         for (actor_id, reply) in &current_state.replies {
-            if reply.number_of_likes > max_likes {
-                max_likes = reply.number_of_likes;
+            if reply.likes > max_likes {
+                max_likes = reply.likes;
                 actor_id_with_most_likes = Some(actor_id);
             }
         }
-
         actor_id_with_most_likes
     }
 
@@ -60,10 +59,10 @@ impl Thread {
         let mut max_likes = 0;
         let mut post_id_winner: Option<&String> = None;
 
-        for (actor_id, reply) in &current_state.replies {
-            if reply.number_of_likes > max_likes {
-                max_likes = reply.number_of_likes;
-                post_id_winner = Some(&reply.post_id);
+        for (_, reply) in &current_state.replies {
+            if reply.likes > max_likes {
+                max_likes = reply.likes;
+                post_id_winner = Some(&reply.id);
             }
         }
         post_id_winner
@@ -71,7 +70,7 @@ impl Thread {
 
     fn find_actor_id_by_post_id(&mut self, target_post_id: String) -> Option<&ActorId> {
         for (actor_id, reply) in self.replies.iter() {
-            if *reply.post_id == *target_post_id {
+            if *reply.id == *target_post_id {
                 return Some(actor_id)
             }
         }
@@ -123,7 +122,7 @@ impl Thread {
     fn find_reply_by_id(&mut self, target_reply_id: String) -> Option<&mut ThreadReply> {
         let replies = &mut self.replies;
         for (_, reply) in replies {
-            if reply.post_id == target_reply_id {
+            if reply.id == target_reply_id {
                 return Some(reply);
             }
         }
@@ -184,7 +183,7 @@ async fn main() {
             new_thread.title = init_thread.title;
             new_thread.content = init_thread.content;
             new_thread.photo_url = init_thread.photo_url;
-            new_thread.state = ThreadState::Active;
+            new_thread.thread_status = ThreadState::Active;
             new_thread.graph_rep = HashMap::new();
             // Immediately push thread id to graph
             new_thread.graph_rep.insert(new_thread.id.clone(), Vec::new());
@@ -200,18 +199,21 @@ async fn main() {
 
         ThreadAction::EndThread => {
             let thread = thread_state_mut();
-            thread.state = ThreadState::Expired;
+            thread.thread_status = ThreadState::Expired;
             let &winner = thread.find_winner_actor_id().expect("Winner not found");
 
             let distributed_tokens = thread.distributed_tokens;
+
             // calculate amount of tokens to distribute
-            let tokens_for_abs_winner = (distributed_tokens.clone() as f64 * 0.4) as u128;
+            let tokens_for_abs_winner = distributed_tokens.clone() * 4 / 10;
 
             thread.tokens_transfer_reward(tokens_for_abs_winner, winner).await;
             let path_winners = thread.find_path_to_winner(&thread.id.clone());
-            let tokens_for_each_path_winner = (distributed_tokens.clone() as f64 * 0.4 / path_winners.len() as f64) as u128;
-            for actor in path_winners {
-                thread.tokens_transfer_reward(tokens_for_each_path_winner, actor).await;
+            if !path_winners.is_empty() {
+                let tokens_for_each_path_winner = (distributed_tokens.clone() * 4 / 10) / path_winners.len() as u128;
+                for actor in path_winners {
+                    thread.tokens_transfer_reward(tokens_for_each_path_winner, actor).await;
+                }
             }
         }
 
@@ -219,11 +221,11 @@ async fn main() {
             let thread = thread_state_mut();
             
             let _reply_user = thread.replies.entry(msg::source()).or_insert(ThreadReply {
-                post_id: reply_id.clone(),
-                post_owner: msg::source(),
+                id: reply_id.clone(),
+                owner: msg::source(),
                 content,
-                number_of_likes: 0,
-                number_of_reports: 0,
+                likes: 0,
+                reports: 0,
             });
 
             // push reply to the graph representation
@@ -236,7 +238,7 @@ async fn main() {
             let thread = thread_state_mut();
             thread.participants.entry(msg::source()).or_insert(amount);
             let reply = thread.find_reply_by_id(reply_id).expect("Reply_id not get");
-            reply.number_of_likes += 1;
+            reply.likes += 1;
         }
     };
 }
@@ -255,7 +257,6 @@ pub struct InitFT {
     pub ft_program_id: ActorId,
 }
 
-
 impl From<Thread> for IoThread {
     fn from(value: Thread) -> Self {
 
@@ -268,9 +269,9 @@ impl From<Thread> for IoThread {
         photo_url,
         replies,
         participants,
-        state,
+        thread_status,
         distributed_tokens,
-        graph_rep
+        graph_rep,
     } = value;
 
     let participants = participants.iter().map(|(k, v)| (*k, v.clone())).collect();
@@ -286,11 +287,10 @@ impl From<Thread> for IoThread {
         photo_url,
         replies,
         participants,
-        state,
+        thread_status,
         distributed_tokens,
         graph_rep
     }
-
 }
 }
 

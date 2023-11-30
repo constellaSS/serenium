@@ -15,11 +15,11 @@ pub struct InitThread {
 
 #[derive(Encode, Decode, TypeInfo, PartialEq, Eq, Clone, Debug)]
 pub struct ThreadReply {
-    pub post_id: String,
-    pub post_owner: ActorId,
+    pub id: String,
+    pub owner: ActorId,
     pub content: String,
-    pub number_of_likes: u128,
-    pub number_of_reports: u128,
+    pub likes: u128,
+    pub reports: u128,
 }
 
 #[derive(Default, Encode, Decode, Clone, TypeInfo)]
@@ -32,9 +32,9 @@ pub struct Thread {
     pub photo_url: String,
     pub replies: Vec<ThreadReply>,
     pub participants:Vec<(ActorId, u128)>,
-    pub state: ThreadState,
+    pub thread_status: ThreadState,
     pub distributed_tokens: u128,
-    pub graph: Vec<(String, Vec<String>)>
+    pub graph_rep: Vec<(String, Vec<String>)>
 }
 
 #[derive( Encode, Decode, Clone, TypeInfo)]
@@ -113,7 +113,7 @@ pub struct IoThread {
     pub photo_url: String,
     pub replies: Vec<(ActorId, ThreadReply)>,
     pub participants:Vec<(ActorId, u128)>,
-    pub state: ThreadState,
+    pub thread_status: ThreadState,
     pub distributed_tokens: u128,
     pub graph_rep: Vec<(String, Vec<String>)>
 }
