@@ -10,6 +10,8 @@ const CardHeaderImage = ({imgUrl}: CardHeaderImageProps) => {
 		}}>
 			<div className={"image-second-container"}>
 				<img alt={"post-picture"} src={imgUrl} id={"post-photo"}/>
+				<img alt="." src={"../../../../assets/images/icons/post_curves.svg"} id={"foreground-image"}/>
+				<img alt="." src={"../../../../assets/images/icons/question_post.svg"} id={"foreground-image1"}/>
 			</div>
 			<div id={"type-section"} ></div>
 		</div>
