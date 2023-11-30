@@ -4,6 +4,7 @@ import { Header, ApiLoader } from 'components';
 import { withProviders } from 'hocs';
 import './normalize.css';
 import NavBar from "./components/layout/NavBar/NavBar";
+import ConnectWallet from "./pages/ConnectWallet/ConnectWallet";
 
 function Component() {
   const { isApiReady } = useApi();
