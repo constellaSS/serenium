@@ -58,7 +58,6 @@ function PostCard () {
 	return (
 		<div className="postCard">
 			{threadState?.photoUrl !== "" && <CardHeaderImage imgUrl={threadState?.photoUrl as string}/>}
-			{threadState?.photoUrl === "" && <img alt="." src={"../../../../assets/images/icons/question_text_post.svg"} id={"id_image"}/>}
 			<div className={"post-card-body"}>
 				<div className={"post-card-info"} onClick={() => {
 					window.location.href = '/post'

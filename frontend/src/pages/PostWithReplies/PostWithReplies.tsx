@@ -55,7 +55,7 @@ function PostWithReplies() {
 				<PostCard/>
 				<div className={"replies-container"}>
 					{threadState?.replies.map(([_, reply]) => (
-						<Reply title={reply.title} content={reply.content}/>
+						<Reply title={reply.title} content={reply.content} id={reply.id} likes={reply.likes}/>
 					))}
 				</div>
 			</div>

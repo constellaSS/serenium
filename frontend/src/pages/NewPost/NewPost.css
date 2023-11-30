@@ -2,7 +2,7 @@
 .new-post-container {
     font-family: 'Japandi', sans-serif;
     color: #ffffff;
-    padding: 15vh 5vw 2.5vh;
+    padding: 15vh 5vw 1vh;
     background-color: #121212;
     background-image: url("./newPostChallengeBG.svg");
     background-position: center;
@@ -43,7 +43,6 @@
     font-size: 8vw;
     width: 85vw;
     border: none;
-
     outline: none;
 }
 #post-title::selection{
@@ -52,7 +51,8 @@
 
 #content-input {
     min-height: fit-content;
-    height: 50vh;    outline: none;
+    height: 35vh;
+    outline: none;
 }
 
 #upper-section {

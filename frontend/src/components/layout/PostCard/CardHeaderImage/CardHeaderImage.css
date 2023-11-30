@@ -14,12 +14,12 @@
 
 }
 
-
 #post-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
 
@@ -44,4 +44,12 @@
     top: 2vh;
     right: 10vw;
     transform: translate(0vw, 2vh);
+}
+
+.type-svg-container {
+    height: 20vw;
+    width: 20vh;
+    position: absolute;
+    top: 0;
+    right: 0;
 }

@@ -152,14 +152,10 @@ const NewPost = ({ isReply }: NewPostProps) => {
 			<div className={"new-post-container"} style={dynamicBackground}>
 				<div className={"form-container"}>
 					<div id={"upper-section"}>
-
 						<div className={"new-post-upper-row"}>
-
 							<h2 className={"new-post-heading"}>New {isReply? 'Reply' : 'Post'}</h2>
 							{!isReply && <TypeDropdown threadType={ThreadType} setThreadType={setThreadType}/>}
 						</div>
-
-
 						<input className={"new-post-input"} id={"post-title"} type={"text"} name={"post-title"} placeholder={"Title"} value={Title} required={true} onChange={(e) => {
 							setTitle(e.target.value)
 						}}/>

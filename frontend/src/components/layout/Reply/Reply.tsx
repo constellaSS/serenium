@@ -7,10 +7,12 @@ import {PROGRAMS} from "../../../consts";
 
 interface ReplyPreviewProps {
 	title: string,
-	content: string
+	content: string,
+	id: string,
+	likes: number
 }
 
-function Reply ({title, content}: ReplyPreviewProps) {
+function Reply ({title, content, id, likes}: ReplyPreviewProps) {
 	const alert = useAlert();
 	const {accounts, account} = useAccount();
 	const {api} = useApi();
@@ -19,9 +21,10 @@ function Reply ({title, content}: ReplyPreviewProps) {
 
 	const likeMessage: any = {
 		destination: PROGRAMS.THREAD.ID,
-		payload: {
-			likeReply: 1
-		},
+		payload: [
+			1,
+			id
+		],
 		gasLimit: 899819245,
 		value: 0,
 	}

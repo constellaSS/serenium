@@ -18,12 +18,10 @@
     font-display: swap;
 }
 
-
 .post-card-body{
     min-height: fit-content;
     width: 90vw;
     background-color: #1E1E1E;
-
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -131,4 +129,10 @@
 }
 #postCardBan{
     background-image: url("./icons/postCardBan.svg")
+}
+
+.type-svg-container {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
