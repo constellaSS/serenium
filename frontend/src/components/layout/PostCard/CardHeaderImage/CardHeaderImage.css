@@ -1,3 +1,22 @@
+
+.image-first-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.image-second-container{
+    width: 90vw;
+    height: 50vh;
+    overflow: hidden;
+    position: relative;
+}
+
+
 #post-photo {
-    max-height: 20vh;
+    width: 100%; /* Make the image fill the container width */
+    height: 100%; /* Make the image fill the container height */
+    object-fit: cover;
+
 }
