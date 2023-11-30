@@ -2,7 +2,16 @@
 html, body {
     margin: 0;
     padding: 0;
+    overflow-y: hidden;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;
 }
+
+
+body::-webkit-scrollbar {
+    display: none; /* For WebKit browsers (Chrome, Safari) */
+}
+
 
 .contentWrapper{
     display: flex;
@@ -10,34 +19,45 @@ html, body {
     justify-content: space-between;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    height: 80vh;
     gap: 0;
-    overflow: hidden;
+    overflow-y: hidden;
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none;
 }
 
+
 .user{
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 40vh;
+    margin-top: 0vw;
 }
 
 .user-image{
     width: 50vw;
-    height: 50vh;
+    height: 100vh;
     background-color: transparent;
     background-image: url("../../assets/images/icons/user.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+    margin-bottom: 0vw;
 }
 
 .user-name{
+    flex: 1;
     font-family: 'Japandi',sans-serif;
     color: #ffffff;
     font-size: 5.5vw;
-    margin-bottom: 0vw;
+    margin-top: 0vw;
+}
+
+.Polkadot{
+    height: 1vh;
 }
 
 
@@ -60,6 +80,7 @@ html, body {
     border: none;
     outline: none;
     background-position: center;
+    margin-top: 5vw;
 }
 
 

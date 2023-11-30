@@ -2,7 +2,6 @@ import './Profile.css'
 
 function Profile() {
     return (
-        <div className={"full-screen"}>
             <div className={"contentWrapper"}>
                 <div className={"user"}>
                     <div className={"user-image"}/>
@@ -15,7 +14,6 @@ function Profile() {
                     <h2 className={"user-name"}>Log out</h2>
                 </div>
             </div>
-        </div>
     )
 }
 
