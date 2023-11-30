@@ -1,0 +1,65 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.contentWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    gap: 0;
+    overflow: hidden;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+.user-image{
+    width: 50vw;
+    height: 50vh;
+    background-color: transparent;
+    background-image: url("../../assets/images/icons/user.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.user-name{
+    font-family: 'Japandi',sans-serif;
+    color: #ffffff;
+    font-size: 5.5vw;
+    margin-bottom: 0vw;
+}
+
+
+.logout-button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 55vw;
+    height: 40vh;
+}
+
+#logout{
+    width: 25vw;
+    height: 12vh;
+    background-image: url("../../assets/images/icons/logout.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    background-position: center;
+}
+
+
