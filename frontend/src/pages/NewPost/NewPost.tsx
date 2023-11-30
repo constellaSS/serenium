@@ -1,12 +1,14 @@
 import NavBar from "../../components/layout/NavBar/NavBar";
 import './NewPost.css'
 import {useEffect, useState} from "react";
-import {ProgramMetadata} from "@gear-js/api";
+import {HexString, ProgramMetadata} from "@gear-js/api";
 import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
 import {web3FromSource} from "@polkadot/extension-dapp";
 import {BlobServiceClient} from "@azure/storage-blob";
 import {AZURE, PROGRAMS} from "../../consts";
 import TypeDropdown from "./TypeDropdown/TypeDropdown";
+import {generateRandomId} from "../../utils/random_id";
+import {u64} from "@polkadot/types";
 
 interface NewPostProps {
 	isReply: boolean
@@ -24,8 +26,7 @@ const NewPost = ({isReply}: NewPostProps) => {
 
 	const newThreadPayload = {
 		NewThread: {
-			// TODO: handle id generation
-			id: "2",
+			id: generateRandomId(false),
 			threadType: ThreadType,
 			title: Title,
 			content: Content,
@@ -35,7 +36,7 @@ const NewPost = ({isReply}: NewPostProps) => {
 
 	const replyPayload = {
 		AddReply: {
-			id: "2",
+			id: generateRandomId(true),
 			title: Title,
 			content: Content,
 			photoUrl: photoUrl
@@ -44,10 +45,12 @@ const NewPost = ({isReply}: NewPostProps) => {
 
 	const metadata = ProgramMetadata.from(PROGRAMS.THREAD.META);
 
+	let payload = isReply ? replyPayload : newThreadPayload;
+
 	const message: any = {
 		destination: PROGRAMS.THREAD.ID,
-		payload: isReply ? replyPayload : newThreadPayload,
-		gasLimit: 2099819245,
+		payload: payload,
+		gasLimit: 2999819245,
 		value: 0,
 	};
 
@@ -57,6 +60,7 @@ const NewPost = ({isReply}: NewPostProps) => {
 		const blobService = new BlobServiceClient(
 			`https://${storageAccountName}.blob.core.windows.net/?${sasToken}`
 		)
+
 
 		const containerClient = blobService.getContainerClient('postpictures');
 		await containerClient.createIfNotExists({
@@ -159,7 +163,11 @@ const NewPost = ({isReply}: NewPostProps) => {
 							{selectedImg && <p>{selectedImg.name}</p>}
 						</div>
 						<button id={"publish-post-btn"} onClick={async () => {
-							await uploadPic();
+							if (!selectedImg) {
+								await signer();
+							} else {
+								await uploadPic();
+							}
 						}}>
 							<p className={"publish-post-btn-text"}>Publish</p>
 							<div className={"add-post-svg"}></div>
