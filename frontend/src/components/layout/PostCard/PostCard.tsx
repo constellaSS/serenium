@@ -55,27 +55,66 @@ function PostCard () {
 
 	const compoundClassName = `${threadState?.state === 'Expired' ? 'cardPostAddButtonBlocked' : 'cardPostAddButton'}`;
 
+	const [elementExists, setElementExists] = useState(false);
+
+		// Function to toggle the existence of the element
+	const toggleElement = () => {
+		setElementExists(!elementExists);
+	};
+
 	return (
 		<div className="postCard">
-			<CardHeaderImage imgUrl={threadState?.photoUrl as string}/>
-			<div className={"post-card-body"}>
-				<div className={"post-card-info"} onClick={() => {
-					window.location.href = '/post'
-				}}>
-					<h2 className="postCardTitle">{threadState?.title}</h2>
-					<p className="postCardContent">{threadState?.content}</p>
-				</div>
-				<div className={"tags-container"}>
-					<Tag name={"lorem"}/>
-					<Tag name={"ipsum"}/>
-				</div>
-				<div className="postCardButtonOutsideContainer">
+			{elementExists ? (
+				<div>
+				<CardHeaderImage imgUrl={threadState?.photoUrl as string}/>
+				<div className={"post-card-body"}>
+					<div className={"post-card-info"} onClick={() => {
+						window.location.href = '/post'
+					}}>
+						<h2 className="postCardTitle">{threadState?.title}</h2>
+						<p className="postCardContent">{threadState?.content}</p>
+					</div>
+					<div className={"tags-container"}>
+						<Tag name={"lorem"}/>
+						<Tag name={"ipsum"}/>
+					</div>
+					<div className="postCardButtonOutsideContainer">
 
-					<button className={compoundClassName}  type="button"/>
+						<button className={compoundClassName}  type="button"/>
+					</div>
+					<button onClick={toggleElement}>
+						Toggle Element
+					</button>
 				</div>
-			</div>
+				</div>
+			) : (
+				<div>
+				<div className={"post-card-body"}>
+					<div className={"post-card-info"} onClick={() => {
+						window.location.href = '/post'
+					}}>
+						<h2 className="postCardTitle">{threadState?.title}</h2>
+						<img alt="." src={"../../../../assets/images/icons/question_text_post.svg"} id={"id_image"}/>
+						<p className="postCardContent">{threadState?.content}</p>
+					</div>
+					<div className={"tags-container"}>
+						<Tag name={"lorem"}/>
+						<Tag name={"ipsum"}/>
+					</div>
+					<div className="postCardButtonOutsideContainer">
+
+						<button className={compoundClassName}  type="button"/>
+					</div>
+					<button onClick={toggleElement}>
+						Toggle Element
+					</button>
+				</div>
+				</div>
+			)}
+
 		</div>
 	)
 }
+
 
 export default PostCard;
