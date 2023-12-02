@@ -1,10 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Home } from './home';
-import { Main } from './main';
 import PostWithReplies from "./PostWithReplies/PostWithReplies";
-import PostImage from "./PostImage/PostImage";
 import NewPost from "./NewPost/NewPost";
-import {ApiLoader} from "../components";
 import Profile from "./Profile/Profile";
 import ConnectWallet from "./ConnectWallet/ConnectWallet";
 import React from "react";

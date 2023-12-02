@@ -24,6 +24,7 @@ function AlertProvider({ children }: ProviderProps) {
 const providers = [BrowserRouter, AlertProvider, ApiProvider, AccountProvider];
 
 function withProviders(Component: ComponentType) {
+  // @ts-ignore
   return () => providers.reduceRight((children, Provider) => <Provider>{children}</Provider>, <Component />);
 }
 

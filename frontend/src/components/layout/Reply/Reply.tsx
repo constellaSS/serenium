@@ -3,8 +3,6 @@ import {ProgramMetadata} from "@gear-js/api";
 import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
 import {web3FromSource} from "@polkadot/extension-dapp";
 import {PROGRAMS} from "../../../consts";
-import {useState} from "react";
-import {PROGRAMS} from "../../../consts";
 
 interface ReplyPreviewProps {
 	title: string,
