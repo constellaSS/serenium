@@ -66,7 +66,7 @@ function PostWithReplies() {
 					))}
 				</div>
 				<div className={"cat-container"}>
-					<img alt="." src={"../../assets/images/icons/cat_no_replies.svg"} id={"cat"}/>
+					<img alt="" src={"../../assets/images/icons/cat_no_replies.svg"} id={"cat"}/>
 					<h2 className={"gato-texto"}>There are no replies on this thread add yours</h2>
 				</div>
 			</div>
