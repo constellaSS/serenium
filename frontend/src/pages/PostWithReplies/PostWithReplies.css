@@ -4,10 +4,10 @@
     display: flex;
     flex-direction: column;
     background-color: #1E1E1E;
-    gap: 2vh;
     height: 100vh;
     padding-top: 10vh;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .cat-container{
@@ -18,11 +18,12 @@
 }
 
 .gato-texto{
-    position: absolute;
     bottom: 0;
     width: 100%;
     text-align: center;
     right: 0vw;
+    padding: 1vw 2vh;
+    position: absolute;
 }
 
 
@@ -31,8 +32,8 @@
     height: 60vh;
     background-image: url("../../assets/images/icons/cat_no_replies.svg");
     background-repeat: no-repeat;
-    position: absolute;
     text-align: center;
+    position: absolute;
     right: 22vw;
 }
 
