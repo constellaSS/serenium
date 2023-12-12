@@ -1,10 +1,8 @@
-
 .image-first-container{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
-
 
 .image-second-container{
     width: 90vw;
@@ -26,7 +24,7 @@
 #foreground-image{
     width: 50vw;
     height: 50vh;
-    background-image: url("../../../../../../../serenium-frontend-next/src/components/PostCard/CardHeaderImage/icons/post_curves.svg");
+    background-image: url("./icons/post_curves.svg");
     background-repeat: no-repeat;
     position: absolute;
     top: 2vh;
@@ -38,7 +36,7 @@
 #foreground-image1{
     width: 20vw;
     height: 20vh;
-    background-image: url("../../../../../../../serenium-frontend-next/src/components/PostCard/CardHeaderImage/icons/question_post.svg");
+    background-image: url("./icons/question_post.svg");
     background-repeat: no-repeat;
     position: absolute;
     top: 2vh;

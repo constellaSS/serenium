@@ -1,17 +1,3 @@
-
-/*html, body {*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    overflow-y: hidden;*/
-/*    scrollbar-width: none; !* For Firefox *!*/
-/*    -ms-overflow-style: none;*/
-/*}*/
-
-
-/*body::-webkit-scrollbar {*/
-/*    display: none; !* For WebKit browsers (Chrome, Safari) *!*/
-/*}*/
-
 .contentWrapper{
     display: flex;
     flex-direction: column;
@@ -102,7 +88,7 @@
     width: 15vw;
     height: 100%;
     grid-row: 1 / -1;
-    background-image: url("../../../../../serenium-frontend-next/src/app/connect-wallet/icons/polkadot-logo.svg");
+    background-image: url("./icons/polkadot-logo.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-color: transparent;

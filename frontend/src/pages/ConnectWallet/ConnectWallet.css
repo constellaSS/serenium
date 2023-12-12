@@ -11,7 +11,7 @@
 .serenium-logo-wallet {
     width: 100vw;
     height: 50vh;
-    background-image: url("../../../../../serenium-frontend-next/src/app/connect-wallet/icons/serenium_wallet.svg");
+    background-image: url("./icons/serenium_wallet.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -20,7 +20,7 @@
 .polkadot-logo-wallet {
     width: 18vw;
     height: 6vh;
-    background-image: url("../../../../../serenium-frontend-next/src/app/connect-wallet/icons/polkadot-logo.svg");
+    background-image: url("./icons/polkadot-logo.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-color: transparent;

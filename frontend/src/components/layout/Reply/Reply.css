@@ -2,8 +2,8 @@
 @font-face {
     font-family: 'Japandi';
     src: local('Japandi Bold'), local('JapandiBold'),
-    url('../../../../../../serenium-frontend-next/src/assets/fonts/JapandiBold.woff2') format('woff2'),
-    url('../../../../../../serenium-frontend-next/src/assets/fonts/JapandiBold.woff') format('woff');
+    url('../../../assets/fonts/JapandiBold.woff2') format('woff2'),
+    url('../../../assets/fonts/JapandiBold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -12,8 +12,8 @@
 @font-face {
     font-family: 'Japandi';
     src: local('Japandi'), local('JapandiRegular'),
-    url('../../../../../../serenium-frontend-next/src/assets/fonts/JapandiRegular.woff2') format('woff2'),
-    url('../../../../../../serenium-frontend-next/src/assets/fonts/JapandiRegular.woff') format('woff');
+    url('../../../assets/fonts/JapandiRegular.woff2') format('woff2'),
+    url('../../../assets/fonts/JapandiRegular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
