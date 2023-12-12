@@ -151,35 +151,38 @@ const NewPost = ({ isReply }: NewPostProps) => {
 		<>
 			<div className={styles.newPostContainer} style={dynamicBackground}>
 				<div className={styles.formContainer}>
-					<div id={"styles.upper-section"}>
-						<div className={"new-post-upper-row"}>
-							<h2 className={"new-post-heading"}>New {isReply? 'Reply' : 'Post'}</h2>
+					<div className={styles.upperSection}>
+						<div className={styles.newPostUpperRow}>
+							{/* newPostHeading not found in css */}
+							<h2 className={styles.newPostHeading}>New {isReply? 'Reply' : 'Post'}</h2>
 							{!isReply && <TypeDropdown threadType={ThreadType} setThreadType={setThreadType}/>}
 						</div>
-						<input className={"new-post-input"} id={"post-title"} type={"text"} name={"post-title"} placeholder={"Title"} value={Title} required={true} onChange={(e) => {
+						<input className={`${styles.newPostInput} ${styles.postTitle}`} type={"text"} name={"post-title"} placeholder={"Title"} value={Title} required={true} onChange={(e) => {
 							setTitle(e.target.value)
 						}}/>
-						<textarea name={"content"} placeholder={"Content (optional)"} id={"content-input"} className={"new-post-input"} value={Content} onChange={(e) => {
+						<textarea name={"content"} placeholder={"Content (optional)"} className={`${styles.newPostInput} ${styles.contentInput}`} value={Content} onChange={(e) => {
 							setContent(e.target.value)
 						}}/>
 					</div>
-					<div id={"lower-section"}>
-						<div className={"photo-input-container"}>
-							<input type={"file"} id={"photo-input"} name={"image"} onChange={handleImgChange}/>
-							<label htmlFor={"photo-input"} className={"photo-label"}>
-								<div id={"photo-upload-icon"}></div>
+					<div className={styles.lowerSection}>
+						{/* photoInputContainer not found in css */}
+						<div className={styles.photoInputContainer}>
+							<input type={"file"} className={styles.photoInput} name={"image"} onChange={handleImgChange}/>
+							{/* photoLabel not found  in css */}
+							<label htmlFor={"photo-input"} className={styles.photoLabel}>
+								<div className={styles.photoUploadIcon}></div>
 							</label>
 							{selectedImg && <p>{selectedImg.name}</p>}
 						</div>
-						<button id={"publish-post-btn"} onClick={async () => {
+						<button className={styles.publishPostBtn} onClick={async () => {
 							if (!selectedImg) {
 								await signer();
 							} else {
 								await uploadPic();
 							}
 						}}>
-							<p className={"publish-post-btn-text"}>Publish</p>
-							<div className={"add-post-svg"}></div>
+							<p className={styles.publishPostBtnText}>Publish</p>
+							<div className={styles.addPostSvg}></div>
 						</button>
 					</div>
 				</div>

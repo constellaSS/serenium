@@ -17,7 +17,7 @@
     overflow: hidden;
 }
 
-.new-post-input {
+.newPostInput {
     background-color: transparent;
     border: none;
     caret-color: #ffffff;
@@ -39,7 +39,7 @@
     width: fit-content;
 }
 
-#post-title {
+#postTitle {
     font-size: 8vw;
     width: 85vw;
     border: none;
@@ -49,33 +49,33 @@
     border: none;
 }
 
-#content-input {
+#contentInput {
     min-height: fit-content;
     height: 35vh;
     outline: none;
 }
 
-#upper-section {
+.upperSection {
     display: flex;
     flex-direction: column;
     gap: 1vh;
 }
-.new-post-upper-row{
+.newPostUpperRow{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-#lower-section {
+.lowerSection {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#photo-input {
+.photoInput {
     display: none;
 }
 
-#photo-upload-icon {
+.photoUploadIcon {
     background-color: transparent;
     background-image: url("../../assets/images/icons/photo-upload-icon.svg");
     background-position: center;
@@ -85,7 +85,7 @@
     width: 4vh;
 }
 
-#publish-post-btn {
+.publishPostBtn {
     border: none;
     border-radius: 12px;
     height: 4vh;
@@ -98,14 +98,14 @@
     padding: 0 2vw;
 }
 
-.publish-post-btn-text {
+.publishPostBtnText {
     color: #ffffff;
     font-weight: bold;
     margin-block: 0.1em;
     font-size: 1.2rem;
 }
 
-.add-post-svg {
+.addPostSvg {
     background-color: transparent;
     background-image: url("../../assets/images/icons/add-post-svg.svg");
     background-position: center;
