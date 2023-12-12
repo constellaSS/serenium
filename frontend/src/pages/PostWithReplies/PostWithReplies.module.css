@@ -1,4 +1,4 @@
-.post-replies-container {
+.postRepliesContainer {
     width: 100vw;
     border-radius: 8px;
     display: flex;
@@ -14,6 +14,6 @@
 
 
 
-.replies-container{
+.repliesContainer{
     width: 90vw;
 }

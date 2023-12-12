@@ -4,7 +4,7 @@ import { useAlert, useApi } from '@gear-js/react-hooks';
 import { ProgramMetadata } from '@gear-js/api';
 import Reply from '../../components/layout/Reply/Reply'
 import NavBar from "../../components/layout/NavBar/NavBar";
-import './PostWithReplies.css'
+import styles from './PostWithReplies.module.css'
 import {PROGRAMS} from "../../consts";
 
 type ThreadState = {
@@ -51,9 +51,9 @@ function PostWithReplies() {
 
 	return (
 		<>
-			<div className={"post-replies-container"}>
+			<div className={styles.postRepliesContainer}>
 				<PostCard/>
-				<div className={"replies-container"}>
+				<div className={styles.repliesContainer}>
 					{threadState?.replies.map(([_, reply]) => (
 						<Reply title={reply.title} content={reply.content} id={reply.id} likes={reply.likes}/>
 					))}
