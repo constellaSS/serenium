@@ -1,4 +1,4 @@
-.tag-container {
+.tagContainer {
     border: 2px solid white;
     border-radius: 12px;
     background-color: transparent;
@@ -7,7 +7,7 @@
     padding: 0 1%;
 }
 
-.tag-text {
+.tagText {
     font-family: 'Japandi', sans-serif;
     font-size: 0.6rem;
     color: #ffffff;
