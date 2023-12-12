@@ -1,5 +1,5 @@
 import NavBar from "../../components/layout/NavBar/NavBar";
-import './NewPost.css'
+import styles from './NewPost.module.css'
 import {useEffect, useState} from "react";
 import {ProgramMetadata} from "@gear-js/api";
 import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
@@ -149,9 +149,9 @@ const NewPost = ({ isReply }: NewPostProps) => {
 	};
 	return (
 		<>
-			<div className={"new-post-container"} style={dynamicBackground}>
-				<div className={"form-container"}>
-					<div id={"upper-section"}>
+			<div className={styles.newPostContainer} style={dynamicBackground}>
+				<div className={styles.formContainer}>
+					<div id={"styles.upper-section"}>
 						<div className={"new-post-upper-row"}>
 							<h2 className={"new-post-heading"}>New {isReply? 'Reply' : 'Post'}</h2>
 							{!isReply && <TypeDropdown threadType={ThreadType} setThreadType={setThreadType}/>}

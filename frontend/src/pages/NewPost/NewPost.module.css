@@ -1,5 +1,5 @@
 
-.new-post-container {
+.newPostContainer {
     font-family: 'Japandi', sans-serif;
     color: #ffffff;
     padding: 15vh 5vw 1vh;
@@ -25,7 +25,7 @@
     padding: 2%;
 }
 
-.form-container {
+.formContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
