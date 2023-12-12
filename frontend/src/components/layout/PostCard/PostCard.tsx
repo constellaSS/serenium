@@ -1,12 +1,8 @@
-import './PostCard.css'
-import CardHeaderQuestion from "./CardHeaderQuestion";
-import CardHeaderChallenge from "./CardHeaderChallenge";
+import styles from './PostCard.module.css'
 import {ProgramMetadata} from "@gear-js/api";
 import {useEffect, useState} from "react";
-import Tag from "../Tag/Tag";
-import Reply from "../Reply/Reply";
 import {useAlert, useApi} from "@gear-js/react-hooks";
-import {PROGRAMS} from "../../../consts";
+import {PROGRAMS} from "consts";
 import CardHeaderImage from "./CardHeaderImage/CardHeaderImage";
 
 type ThreadState = {
@@ -34,38 +30,35 @@ function PostCard () {
 	const {api} = useApi();
 	const [threadState, setThreadState] = useState<ThreadState | undefined>(undefined);
 	const alert = useAlert();
-	const [postExpired, setPostExpired] = useState(true);
-
 	const metadata = ProgramMetadata.from(PROGRAMS.THREAD.META);
-
-	const getState = () => {
-		api.programState
-			.read({ programId: PROGRAMS.THREAD.ID, payload: '' }, metadata)
-			.then(result => {
-				setThreadState(result.toJSON() as unknown as ThreadState);
-				alert.success('Successful state');
-			})
-			.catch(({ message }: Error) => alert.error(message));
-	};
 
 	// useEffect hook to update the thread state
 	useEffect(() => {
+		const getState = () => {
+			api?.programState
+				.read({ programId: PROGRAMS.THREAD.ID, payload: '' }, metadata)
+				.then(result => {
+					setThreadState(result.toJSON() as unknown as ThreadState);
+					alert.success('Successful state');
+				})
+				.catch(({ message }: Error) => alert.error(message));
+		};
 		getState();
 	}, []);
 
-	const compoundClassName = `${threadState?.state === 'Expired' ? 'cardPostAddButtonBlocked' : 'cardPostAddButton'}`;
+	const compoundClassName = `${styles.cardPostAddButton} ${threadState?.state === 'Expired' ? styles.cardPostAddButtonBlocked : ''}`;
 
 	return (
 		<div className="postCard">
 			{threadState?.photoUrl !== "" && <CardHeaderImage imgUrl={threadState?.photoUrl as string}/>}
-			<div className={"post-card-body"}>
+			<div className={styles.postCardBody}>
 				<div className={"post-card-info"} onClick={() => {
 					window.location.href = '/post'
 				}}>
-					<h2 className="postCardTitle">{threadState?.title}</h2>
-					<p className="postCardContent">{threadState?.content}</p>
+					<h2 className={styles.postCardTitle}>{threadState?.title}</h2>
+					<p className={styles.postCardContent}>{threadState?.content}</p>
 				</div>
-				<div className="postCardButtonOutsideContainer">
+				<div className={styles.postCardButtonOutsideContainer}>
 					<button className={compoundClassName}  type="button" onClick={() => {
 						window.location.href = `/new-reply/:${threadState?.id}`
 					}}/>
@@ -74,6 +67,5 @@ function PostCard () {
 		</div>
 	)
 }
-
 
 export default PostCard;

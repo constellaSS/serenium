@@ -26,7 +26,7 @@
 #foreground-image{
     width: 50vw;
     height: 50vh;
-    background-image: url("../../../../assets/images/icons/post_curves.svg");
+    background-image: url("../../../../../../../serenium-frontend-next/src/components/PostCard/CardHeaderImage/icons/post_curves.svg");
     background-repeat: no-repeat;
     position: absolute;
     top: 2vh;
@@ -38,7 +38,7 @@
 #foreground-image1{
     width: 20vw;
     height: 20vh;
-    background-image: url("../../../../assets/images/icons/question_post.svg");
+    background-image: url("../../../../../../../serenium-frontend-next/src/components/PostCard/CardHeaderImage/icons/question_post.svg");
     background-repeat: no-repeat;
     position: absolute;
     top: 2vh;

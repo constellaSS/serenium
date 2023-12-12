@@ -16,7 +16,7 @@
     width: 35vw;
     height: 40vh;
     background-color: transparent;
-    background-image: url("./../../../assets/images/icons/sereniumText.svg");
+    background-image: url("../../../../../../serenium-frontend-next/src/components/layout/Header/icons/sereniumText.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -26,7 +26,7 @@
     width: 5.5vh;
     height: 5.5vh;
     background-color: transparent;
-    background-image: url("./../../../assets/images/icons/sideMenuIcon.svg");
+    background-image: url("../../../../../../serenium-frontend-next/src/components/layout/Header/icons/sideMenuIcon.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -62,7 +62,7 @@
     height: 5vh;
     border: none;
     background-color: transparent;
-    background-image: url("./../../../assets/images/icons/back-btn.svg");
+    background-image: url("../../../../../../serenium-frontend-next/src/components/layout/Header/icons/back-btn.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;

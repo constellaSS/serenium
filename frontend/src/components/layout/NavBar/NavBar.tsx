@@ -1,19 +1,17 @@
-import './navBar.css';
+import styles from './Navbar.module.css'
 
-function NavBar() {
-	return (
-		<div className="navBar">
-			<button type='button' id="navBtn1" className="navBarButton" onClick={() => {
+export default function Navbar() {
+	return(
+		<div className={styles.navbar}>
+			<button type='button' className={`${styles.navbarButton} ${styles.navBtn1}`} onClick={() => {
 				window.location.href = '/'
 			}}/>
-			<button type='button' onClick={() => {
+			<button type='button' className={`${styles.navbarButton} ${styles.navBtn3}`} onClick={() => {
 				window.location.href = '/new-post'
-			}} id="navBtn3" className="navBarButton"/>
-			<button type='button' id="navBtn5" className="navBarButton" onClick={() => {
+			}}/>
+			<button type='button' className={`${styles.navbarButton} ${styles.navBtn5}`} onClick={() => {
 				window.location.href = '/profile'
 			}}/>
 		</div>
 	)
 }
-
-export default NavBar;

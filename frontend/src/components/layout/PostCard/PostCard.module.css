@@ -1,24 +1,4 @@
-@font-face {
-    font-family: 'Japandi';
-    src: local('Japandi Bold'), local('JapandiBold'),
-    url('./../../../assets/fonts/JapandiBold.woff2') format('woff2'),
-    url('./../../../assets/fonts/JapandiBold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Japandi';
-    src: local('Japandi'), local('JapandiRegular'),
-    url('./../../../assets/fonts/JapandiRegular.woff2') format('woff2'),
-    url('./../../../assets/fonts/JapandiRegular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-.post-card-body{
+.postCardBody{
     min-height: fit-content;
     width: 90vw;
     background-color: #1E1E1E;
@@ -37,11 +17,13 @@
     background-repeat: no-repeat;
     border-radius:8px 8px 0 0;
 }
+
 .cardHeaderQuestion{
-   background-image: url("./icons/headerBgQuestion.svg");
+    background-image: url("./icons/headerBgQuestion.svg");
 }
+
 .cardHeaderChallenge{
-   background-image: url("./icons/headerBgChallenge.svg");
+    background-image: url("./icons/headerBgChallenge.svg");
 }
 
 .postCardTitle{
@@ -50,22 +32,12 @@
     font-size: 5.5vw;
 }
 
-#id_image{
-    width: 20vw;
-    height: 20vh;
-    background-image: url('../../../assets/images/icons/question_text_post.svg');
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 10vh;
-    right: 10vw;
-    transform: translate(0vw, 2vh);
-}
-
 .postCardContent{
     color:#C1C1C1;
     font-family: 'Japandi',sans-serif;
     font-size: 4vw;
 }
+
 .postCardButtonOutsideContainer{
     width: 100%;
     height: 22%;
@@ -74,7 +46,8 @@
     justify-content: space-around;
     align-items: flex-end;
 }
-.postCardButtonInerContainer{
+
+.postCardButtonInnerContainer{
     width: 55%;
     height: 55%;
     display: flex;
@@ -89,7 +62,7 @@
     height: 6.8vh;
     border: none;
     background-color: transparent;
-    background-image: url("./icons/AddPostBtn.svg");
+    background-image: url("./icons/addPostBtn.svg");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -114,21 +87,6 @@
     display: flex;
     flex-direction: row;
     gap: 2vw;
-}
-
-#postCardLike{
-    background-image: url("./icons/postCardLike.svg")
-}
-
-#postCardSave{
-    background-image: url("./icons/postCardSave.svg")
-}
-#postCardShare{
-
-    background-image: url("./icons/postCardShare.svg")
-}
-#postCardBan{
-    background-image: url("./icons/postCardBan.svg")
 }
 
 .type-svg-container {

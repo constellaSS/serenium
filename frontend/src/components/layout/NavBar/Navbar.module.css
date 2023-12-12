@@ -1,4 +1,4 @@
-.navBar{
+.navbar{
     width: 100vw;
     height: 7.5vh;
     position: fixed;
@@ -9,7 +9,8 @@
     align-items: center;
     justify-content: space-around;
 }
-.navBarButton{
+
+.navbarButton{
     width: 5vh;
     height: 5vh;
     background-color: transparent;
@@ -19,15 +20,22 @@
     border: none;
 }
 
-#navBtn1{
+.navBtn1 {
     background-image: url("./icons/navBtn1.svg");
 }
-#navBtn2{
+
+.navBtn2 {
     background-image: url("./icons/navBtn2.svg");
-}#navBtn3{
+}
+
+.navBtn3 {
     background-image: url("./icons/navBtn3.svg");
-}#navBtn4{
+}
+
+.navBtn4 {
     background-image: url("./icons/navBtn4.svg");
-}#navBtn5{
+}
+
+.navBtn5{
     background-image: url("./icons/navBtn5.svg");
 }

@@ -18,12 +18,16 @@ function Reply ({title, content, id, likes}: ReplyPreviewProps) {
 
 	const metadata = ProgramMetadata.from(PROGRAMS.THREAD.META);
 
-	const likeMessage: any = {
-		destination: PROGRAMS.THREAD.ID,
-		payload: [
+	const payload = {
+		likeReply: [
 			1,
 			id
-		],
+		]
+	}
+
+	const likeMessage: any = {
+		destination: PROGRAMS.THREAD.ID,
+		payload,
 		gasLimit: 899819245,
 		value: 0,
 	}
@@ -68,8 +72,11 @@ function Reply ({title, content, id, likes}: ReplyPreviewProps) {
 
 	return (
 		<div className="replyCard">
-			<h2 className="replyTitle">{title}</h2>
-			<p className={"replyContent"}>{content}</p>
+			<div className={"reply-card-content"}>
+				<h2 className="replyTitle">{title}</h2>
+				<p className={"replyContent"}>{content}</p>
+			</div>
+			<button className={"reply-card-like-button"} onClick={signer}></button>
 			<div className={"replyIconContainer"}>
 				<div className={"replyIcon"}></div>
 			</div>

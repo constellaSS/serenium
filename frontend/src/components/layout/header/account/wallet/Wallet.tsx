@@ -1,7 +1,7 @@
 import { Account } from '@gear-js/react-hooks';
 import { AccountButton } from '../account-button';
 import styles from './Wallet.module.scss';
-import {LocalBalanceToken} from "../LocalBalanceToken/LocalBalanceToken";
+import {LocalBalanceToken} from "../../../../../../../../serenium-frontend-next/src/components/layout/Header/LocalBalanceToken/LocalBalanceToken";
 
 type Props = {
   balance: Account['balance'];

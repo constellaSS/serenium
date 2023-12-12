@@ -1,4 +1,3 @@
-import { Account } from './account';
 import "./Header.css"
 import {useLocation} from "react-router-dom";
 import {LocalBalanceToken} from "./account/LocalBalanceToken/LocalBalanceToken";

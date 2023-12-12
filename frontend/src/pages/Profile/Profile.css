@@ -102,7 +102,7 @@
     width: 15vw;
     height: 100%;
     grid-row: 1 / -1;
-    background-image: url("../../assets/images/icons/polkadot-logo.svg");
+    background-image: url("../../../../../serenium-frontend-next/src/app/connect-wallet/icons/polkadot-logo.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-color: transparent;
