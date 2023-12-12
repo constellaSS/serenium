@@ -1,4 +1,4 @@
-import './Profile.css'
+import styles from './Profile.module.css'
 import {useAccount} from "@gear-js/react-hooks";
 import {extractLast10Digits} from "../../utils/extract_from_string";
 import {useState} from "react";
@@ -17,14 +17,14 @@ function Profile() {
 	};
 
 	return (
-		<div className={"contentWrapper"}>
-			<div className={"user"}>
-				<div className={"user-image"}/>
-				<div className={"account-info-container"} onClick={openModal}>
-					<div className={"polkadot-logo"}/>
-					<div className={"account-name-container"}>
-						<h2 className={"user-name"}>{account?.meta.name as string}</h2>
-						<p className={"actor-id"}>...{extractLast10Digits(account?.decodedAddress as string)}</p>
+		<div className={styles.contentWrapper}>
+			<div className={styles.user}>
+				<div className={styles.userImage}/>
+				<div className={styles.accountInfoContainer} onClick={openModal}>
+					<div className={styles.polkadotLogo}/>
+					<div className={styles.accountNameContainer}>
+						<h2 className={styles.userName}>{account?.meta.name as string}</h2>
+						<p className={styles.actorId}>...{extractLast10Digits(account?.decodedAddress as string)}</p>
 					</div>
 				</div>
 			</div>

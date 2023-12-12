@@ -23,7 +23,7 @@
     margin-top: 0vw;
 }
 
-.user-image{
+.userImage{
     width: 50vw;
     height: 35vh;
     background-color: transparent;
@@ -34,7 +34,7 @@
     margin-bottom: 0vw;
 }
 
-.user-name{
+.userName{
     flex: 1;
     font-family: 'Japandi',sans-serif;
     color: #ffffff;
@@ -69,14 +69,14 @@
     margin-top: 5vw;
 }
 
-.actor-id {
+.actorId {
     font-size: 1.5rem;
     color: white;
     font-family: 'Japandi', sans-serif;
     margin-block: 0;
 }
 
-.account-info-container {
+.accountInfoContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +84,7 @@
     height: fit-content;
 }
 
-.polkadot-logo {
+.polkadotLogo {
     width: 15vw;
     height: 100%;
     grid-row: 1 / -1;
