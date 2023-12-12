@@ -1,0 +1,99 @@
+.headerContainer {
+    position: fixed;
+    top:0;
+    display: flex;
+    width: 100vw;
+    height: 8.5vh;
+    flex-direction: row;
+    gap: 5vw;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #121212;
+}
+
+.logoTextSerenium{
+    width: 35vw;
+    height: 40vh;
+    background-color: transparent;
+    background-image: url("./icons/sereniumText.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.dropdownButtonMenu{
+    margin: 1vw;
+    width: 5.5vh;
+    height: 5.5vh;
+    background-color: transparent;
+    background-image: url("./icons/sideMenuIcon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+}
+
+.walletValue {
+    color: white;
+    font-family: 'Japandi',sans-serif;
+    width: 30%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vw;
+}
+
+.accountButtonPol{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: 'Japandi',sans-serif;
+    font-size: 4.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 2vw;
+}
+
+.backBtn {
+    width: 5.5vh;
+    height: 5vh;
+    border: none;
+    background-color: transparent;
+    background-image: url("./icons/back-btn.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logoSerenium {
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    background-image: url("./icons/logo-serenium.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.fullScreenHeaderStyle {
+    background-color: transparent;
+    background-image: url("./icons/full-screen-header-bg.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 180%;
+    height: 8vh;
+    width: 100vw;
+}
+
+.headerLeftContainer {
+    width: 45vw;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4vw;
+}

@@ -59,13 +59,13 @@
 }
 
 #postCardSave{
-    background-image: url("../../components/layout/PostCard/icons/postCardSave.svg")
+    background-image: url("../../components/PostCard/icons/postCardSave.svg")
 }
 #postCardShare{
-    background-image: url("../../components/layout/PostCard/icons/postCardShare.svg")
+    background-image: url("../../components/PostCard/icons/postCardShare.svg")
 }
 #postCardBan{
-    background-image: url("../../components/layout/PostCard/icons/postCardBan.svg")
+    background-image: url("../../components/PostCard/icons/postCardBan.svg")
 }
 #cardPostAddButton{
     background-image: url("../../assets/images/icons/AddPostBtn_White.svg");

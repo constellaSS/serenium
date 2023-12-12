@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import PostCard from '../../components/layout/PostCard/PostCard';
+import PostCard from '../../components/PostCard/PostCard';
 import { useAlert, useApi } from '@gear-js/react-hooks';
 import { ProgramMetadata } from '@gear-js/api';
-import Reply from '../../components/layout/Reply/Reply'
-import NavBar from "../../components/layout/NavBar/NavBar";
+import Reply from '../../components/Reply/Reply'
 import './PostWithReplies.css'
 import {PROGRAMS} from "../../consts";
 
@@ -59,7 +58,6 @@ function PostWithReplies() {
 					))}
 				</div>
 			</div>
-			<NavBar/>
 		</>
 	);
 }

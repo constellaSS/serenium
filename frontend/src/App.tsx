@@ -1,9 +1,8 @@
 import { useApi, useAccount } from '@gear-js/react-hooks';
 import { Routing } from 'pages';
-import { Header, ApiLoader } from 'components';
+import { Header, ApiLoader, Navbar } from 'components';
 import { withProviders } from 'hocs';
 import './normalize.css';
-import NavBar from "./components/layout/NavBar/NavBar";
 
 function Component() {
   const { isApiReady } = useApi();
@@ -17,7 +16,7 @@ function Component() {
     <>
       {isAppReady && isAccountConnected && <Header/>}
       <main>{isAppReady ? <Routing /> : <ApiLoader />}</main>
-      {isAppReady && isAccountConnected && <NavBar/>}
+      {isAppReady && isAccountConnected && <Navbar/>}
     </>
   );
 }

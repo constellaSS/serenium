@@ -1,7 +1,7 @@
 import './ConnectWallet.css'
 import {useState} from "react";
 import {useAccount} from "@gear-js/react-hooks";
-import {AccountsModal} from "../../components/layout/header/account/accounts-modal";
+import {AccountsModal} from "../../components/layout/Header/account/accounts-modal";
 const ConnectWallet = () => {
 	const { account, accounts } = useAccount();
 	const [isModalOpen, setIsModalOpen] = useState(false);

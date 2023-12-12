@@ -1,10 +1,9 @@
-import { Header, Footer } from "./layout";
+import { Header, Navbar } from "./layout";
 import { ApiLoader, Loader } from "./loaders";
-
 
 export {
   Header,
-  Footer,
+  Navbar,
   ApiLoader,
   Loader,
 };

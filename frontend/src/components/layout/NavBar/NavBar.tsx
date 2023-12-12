@@ -1,6 +1,6 @@
 import styles from './Navbar.module.css'
 
-export default function Navbar() {
+export function Navbar() {
 	return(
 		<div className={styles.navbar}>
 			<button type='button' className={`${styles.navbarButton} ${styles.navBtn1}`} onClick={() => {

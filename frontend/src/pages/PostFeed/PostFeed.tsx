@@ -1,14 +1,12 @@
-import PostCard from "../../components/layout/PostCard/PostCard";
-import './PostFeed.css'
+import styles from  './PostFeed.module.css'
+import PostCard from "../../components/PostCard/PostCard";
 
-const PostFeed = () => {
-	return (
-		<div className={"post-feed-page"}>
-			<div className={"post-feed-container"}>
+export default function PostFeed() {
+	return(
+		<main className={styles.postFeedPage}>
+			<div className={styles.postFeedContainer}>
 				<PostCard/>
 			</div>
-		</div>
+		</main>
 	)
 }
-
-export default PostFeed;

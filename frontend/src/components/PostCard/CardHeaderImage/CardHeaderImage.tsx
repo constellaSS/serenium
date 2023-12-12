@@ -5,7 +5,7 @@ interface CardHeaderImageProps {
 
 const CardHeaderImage = ({imgUrl}: CardHeaderImageProps) => {
 	return (
-		<div className={"image-first-container"} id={"card-header-image-container"}>
+		<div className={"image-first-container"} id={"card-Header-image-container"}>
 			<div className={"image-second-container"}>
 				<img alt={"post-picture"} src={imgUrl} id={"post-photo"}/>
 				<div className={"type-svg-container"}>

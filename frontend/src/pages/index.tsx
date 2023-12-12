@@ -4,7 +4,6 @@ import PostWithReplies from "./PostWithReplies/PostWithReplies";
 import NewPost from "./NewPost/NewPost";
 import Profile from "./Profile/Profile";
 import ConnectWallet from "./ConnectWallet/ConnectWallet";
-import React from "react";
 
 const routes = [{ path: '/', element: <ConnectWallet/>} ,{ path: '/home', element: <Home/> },{ path: '/post', element: <PostWithReplies/> }, { path: '/new-post', element: <NewPost isReply={false}/>}, { path: '/new-reply/:postId', element: <NewPost isReply={true}/>}, { path: '/profile', element: <Profile/>}]
 

@@ -1,4 +1,3 @@
-import NavBar from "../../components/layout/NavBar/NavBar";
 import './NewPost.css'
 import {useEffect, useState} from "react";
 import {ProgramMetadata} from "@gear-js/api";
@@ -184,7 +183,6 @@ const NewPost = ({ isReply }: NewPostProps) => {
 					</div>
 				</div>
 			</div>
-			<NavBar/>
 		</>
 	)
 }

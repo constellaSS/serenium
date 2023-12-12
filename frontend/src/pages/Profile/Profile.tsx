@@ -2,7 +2,7 @@ import './Profile.css'
 import {useAccount} from "@gear-js/react-hooks";
 import {extractLast10Digits} from "../../utils/extract_from_string";
 import {useState} from "react";
-import {AccountsModal} from "../../components/layout/header/account/accounts-modal";
+import {AccountsModal} from "../../components/layout/Header/account/accounts-modal";
 
 function Profile() {
 	const { account, accounts } = useAccount();

@@ -2,8 +2,8 @@
 @font-face {
     font-family: 'Japandi';
     src: local('Japandi Bold'), local('JapandiBold'),
-    url('../../../assets/fonts/JapandiBold.woff2') format('woff2'),
-    url('../../../assets/fonts/JapandiBold.woff') format('woff');
+    url('../../assets/fonts/JapandiBold.woff2') format('woff2'),
+    url('../../assets/fonts/JapandiBold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
     font-display: swap;
@@ -12,8 +12,8 @@
 @font-face {
     font-family: 'Japandi';
     src: local('Japandi'), local('JapandiRegular'),
-    url('../../../assets/fonts/JapandiRegular.woff2') format('woff2'),
-    url('../../../assets/fonts/JapandiRegular.woff') format('woff');
+    url('../../assets/fonts/JapandiRegular.woff2') format('woff2'),
+    url('../../assets/fonts/JapandiRegular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -31,7 +31,6 @@
     min-height: fit-content;
     height: fit-content;
     max-height: 15vh;
-    min-height: fit-content;
     background-color: #282828;
     border-radius: 8px;
     display: grid;
