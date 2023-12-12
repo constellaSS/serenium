@@ -1,5 +1,3 @@
-import {bool} from "@polkadot/types";
-
 const ID_LENGTH = 5;
 export function generateRandomId(isReply: boolean): string {
 	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
