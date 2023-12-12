@@ -1,8 +1,4 @@
 .postCardTitle{
-    font-family: 'Japandi',sans-serif;
-    color: #ffffff;
-    font-size: 5.5vw;
-    margin-bottom: 0vw;
 }
 
 .fullScreenPostPage {
@@ -32,10 +28,14 @@
 }
 
 
-.text{
+.textPost{
     display: flex;
     align-items: flex-end;
     padding-left: 5vw;
+    font-family: 'Japandi',sans-serif;
+    color: #ffffff;
+    font-size: 5.5vw;
+    margin-bottom: 0vw;
 }
 
 
@@ -61,13 +61,13 @@
 .postCardSave{
     background-image: url("../../components/layout/PostCard/icons/postCardSave.svg")
 }
-#postCardShare{
+.postCardShare{
     background-image: url("../../components/layout/PostCard/icons/postCardShare.svg")
 }
-#postCardBan{
+.postCardBan{
     background-image: url("../../components/layout/PostCard/icons/postCardBan.svg")
 }
-#cardPostAddButton{
+.cardPostAddButton{
     background-image: url("../../assets/images/icons/AddPostBtn_White.svg");
     width: 6.8vh;
     height: 6.8vh;

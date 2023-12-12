@@ -4,7 +4,7 @@ function PostImage() {
 	return (
 		<div className={styles.fullScreenPostPage}>
 			<div className={styles.contentWrapper}>
-				<div className={styles.text}>
+				<div className={styles.textPost}>
 					<h2 className={styles.postCardTile}>Titulo</h2>
 				</div>
 				<div className={styles.postCardButtonOutsideContainer}>
