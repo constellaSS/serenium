@@ -22,7 +22,7 @@ function Header() {
       return (
         <div id={"header-left-container"}>
           <div className={"logo-serenium"}/>
-          <div className="logoTextSerenium"/>
+          <div className={"logoTextSerenium"}/>
         </div>
       )
     }

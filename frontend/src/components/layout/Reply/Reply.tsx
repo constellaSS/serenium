@@ -1,4 +1,4 @@
-import './Reply.css'
+import styles from './Reply.module.css'
 import {ProgramMetadata} from "@gear-js/api";
 import {useAccount, useAlert, useApi} from "@gear-js/react-hooks";
 import {web3FromSource} from "@polkadot/extension-dapp";
@@ -71,14 +71,14 @@ function Reply ({title, content, id, likes}: ReplyPreviewProps) {
 	};
 
 	return (
-		<div className="replyCard">
-			<div className={"reply-card-content"}>
-				<h2 className="replyTitle">{title}</h2>
-				<p className={"replyContent"}>{content}</p>
+		<div className={styles.replyCard}>
+			<div className={styles.replyCardContent}>
+				<h2 className={styles.replyTitle}>{title}</h2>
+				<p className={styles.replyContent}>{content}</p>
 			</div>
-			<button className={"reply-card-like-button"} onClick={signer}></button>
-			<div className={"replyIconContainer"}>
-				<div className={"replyIcon"}></div>
+			<button className={styles.replyCardLikeButton} onClick={signer}></button>
+			<div className={styles.replyIconContainer}>
+				<div className={styles.replyIcon}></div>
 			</div>
 		</div>
 	)

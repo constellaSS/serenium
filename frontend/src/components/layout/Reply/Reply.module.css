@@ -39,7 +39,7 @@
     grid-template-columns: 8fr 1fr;
     padding: 3%;
 }
-.reply-card-content{
+.replyCardContent{
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -107,7 +107,7 @@
     align-self: center;
 }
 
-.reply-card-like-button {
+.replyCardLikeButton {
     background-image: url("./icons/like.svg");
     background-size: contain;
     background-repeat: no-repeat;
