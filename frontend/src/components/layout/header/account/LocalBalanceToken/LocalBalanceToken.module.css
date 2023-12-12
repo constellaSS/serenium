@@ -1,4 +1,4 @@
-.coin-icon {
+.coinIcon {
     background-color: transparent;
     background-image: url("./icons/money.svg");
     background-position: center;
@@ -8,7 +8,7 @@
     height: 40px;
 }
 
-.balance-container {
+.balanceContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,7 +16,7 @@
     height: 100%;
 }
 
-.balance-text {
+.balanceText {
     color: white;
     font-size: 1.4rem;
     font-family: 'Japandi', sans-serif;

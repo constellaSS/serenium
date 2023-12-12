@@ -1,7 +1,7 @@
 import { encodeAddress, ProgramMetadata } from "@gear-js/api";
 import { useEffect, useState } from "react";
 import { useApi, useAlert, useAccount } from "@gear-js/react-hooks";
-import './LocalBalanceToken.css'
+import styles from './LocalBalanceToken.module.css'
 
 function LocalBalanceToken() {
   const { api } = useApi();
@@ -42,9 +42,9 @@ const meta =
   });
 
   return (
-    <div className={"balance-container"}>
-      <p className={"balance-text"}>{balance}</p>
-      <div className={"coin-icon"}></div>
+    <div className={styles.balanceContainer}>
+      <p className={styles.balanceText}>{balance}</p>
+      <div className={styles.coinIcon}></div>
     </div>
   );
 }
