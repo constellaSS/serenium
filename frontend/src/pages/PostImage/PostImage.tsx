@@ -1,19 +1,20 @@
-import './PostImage.css'
+import styles from './PostImage.module.css'
 
 function PostImage() {
 	return (
-		<div className={"full-screen-post-page"}>
-			<div className={"contentWrapper"}>
-				<div className={"Text"}>
-					<h2 className="postCardTitle">Titulo</h2>
+		<div className={styles.fullScreenPostPage}>
+			<div className={styles.contentWrapper}>
+				<div className={styles.text}>
+					<h2 className={styles.postCardTile}>Titulo</h2>
 				</div>
-				<div className="postCardButtonOutsideContainer">
-					<div className="postCardButtonInerContainer">
-						<button id="postCardSave" className="postCardActionButton" type="button"/>
-						<button id="postCardShare" className="postCardActionButton" type="button"/>
-						<button id="postCardBan" className="postCardActionButton" type="button"/>
+				<div className={styles.postCardButtonOutsideContainer}>
+					<div className={styles.postCardButtonInnerContainer}>
+						<button className={`${styles.postCardActionButton} ${styles.postCardSave}`} type="button"/>
+						<button className={`${styles.postCardActionButton} ${styles.postCardShare}`} type="button"/>
+						<button className={`${styles.postCardActionButton} ${styles.postCardBan}`} type="button"/>
 					</div>
-					<button id="cardPostAddButton" className="postCardActionButton" type="button"/>
+					<button
+						className={`${styles.postCardActionButton} ${styles.cardPostAddButton}`} type="button"/>
 				</div>
 			</div>
 		</div>

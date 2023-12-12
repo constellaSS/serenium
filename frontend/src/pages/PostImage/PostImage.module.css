@@ -5,7 +5,7 @@
     margin-bottom: 0vw;
 }
 
-.full-screen-post-page {
+.fullScreenPostPage {
     width: 100vw;
     height: 100vh;
     border: none;
@@ -32,7 +32,7 @@
 }
 
 
-.Text{
+.text{
     display: flex;
     align-items: flex-end;
     padding-left: 5vw;
@@ -48,7 +48,7 @@
     margin-bottom: 5vw;
 }
 
-.postCardButtonInerContainer{
+.postCardButtonInnerContainer{
     width: 55%;
     height: 55%;
     display: flex;
@@ -58,7 +58,7 @@
     margin-bottom: 3vw;
 }
 
-#postCardSave{
+.postCardSave{
     background-image: url("../../components/layout/PostCard/icons/postCardSave.svg")
 }
 #postCardShare{
