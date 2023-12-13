@@ -27,6 +27,43 @@
     background-repeat: no-repeat;
 }
 
+.userInfo{
+    padding-left: 5vw;
+}
+
+.polkadotLogo {
+    width: 15vw;
+    height: 100%;
+    grid-row: 1 / -1;
+    background-image: url("../Profile/icons/polkadot-logo.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.accountInfoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    height: fit-content;
+}
+
+.userName{
+    flex: 1;
+    font-family: 'Japandi',sans-serif;
+    color: #ffffff;
+    font-size: 2rem;
+    margin-top: 0vw;
+    margin-block: 0;
+}
+
+.actorId {
+    font-size: 1.5rem;
+    color: white;
+    font-family: 'Japandi', sans-serif;
+    margin-block: 0;
+}
 
 .textPost{
     display: flex;
