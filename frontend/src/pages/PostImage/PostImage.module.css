@@ -23,19 +23,23 @@
     height: 100%;
     gap: 0;
     background-image: url("../../assets/images/icons/NavImage.svg");
-    background-size: 100% 180%;
+    background-size: 400% 180%;
     background-repeat: no-repeat;
 }
 
 .userInfo{
     padding-left: 5vw;
+    display: flex;
+    flex-direction: row;
+    mix-blend-mode: screen;
+    text-shadow: 5px 5px #000000;
 }
 
-.polkadotLogo {
+.userImage {
     width: 15vw;
     height: 100%;
     grid-row: 1 / -1;
-    background-image: url("../Profile/icons/polkadot-logo.svg");
+    background-image: url("../../assets/images/icons/user.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-color: transparent;
@@ -73,6 +77,8 @@
     color: #ffffff;
     font-size: 5.5vw;
     margin-bottom: 0vw;
+    mix-blend-mode: screen;
+    text-shadow: 5px 5px #000000;
 }
 
 

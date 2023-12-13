@@ -19,7 +19,7 @@ function PostImage() {
 		<div className={styles.fullScreenPostPage}>
 			<div className={styles.contentWrapper}>
 				<div className={styles.userInfo}>
-					<div className={styles.polkadotLogo}/>
+					<div className={styles.userImage}/>
 					<div className={styles.accountNameContainer}>
 						<h2 className={styles.userName}>{account?.meta.name as string}</h2>
 						<p className={styles.actorId}>...{extractLast10Digits(account?.decodedAddress as string)}</p>
