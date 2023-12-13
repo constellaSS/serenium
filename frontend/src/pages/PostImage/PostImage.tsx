@@ -30,9 +30,12 @@ function PostImage() {
 				</div>
 				<div className={styles.postCardButtonOutsideContainer}>
 					<div className={styles.postCardButtonInnerContainer}>
+						<button className={`${styles.postCardActionButton} ${styles.postCardLike}`} type="button"/>
+						{/*
 						<button className={`${styles.postCardActionButton} ${styles.postCardSave}`} type="button"/>
 						<button className={`${styles.postCardActionButton} ${styles.postCardShare}`} type="button"/>
 						<button className={`${styles.postCardActionButton} ${styles.postCardBan}`} type="button"/>
+						 */}
 					</div>
 					<button
 						className={`${styles.postCardActionButton} ${styles.cardPostAddButton}`} type="button"/>
